@@ -1,5 +1,12 @@
 ﻿@model CarDealerProject.Models.Car
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#CarDealerId').prepend("<option value='-1' selected='selected'></option>");
+    });
+    
+</script>
+
 @using (Html.BeginForm("GetAllSimilar", "Car", FormMethod.Post, new { id = "SearchForm" }))
 { 
     <h3>Search</h3>
@@ -10,38 +17,37 @@
         <legend>Car</legend>
 
         <div class="editor-label">
-            @Html.Label("Brand")
-            <input type="text" name="Brand" />
+            @Html.Label("Brand")<br/>
+            @Html.DropDownList("Brand", TempData["Brands"] as IEnumerable<SelectListItem>)
         </div>
 
         <div class="editor-label">
-            @Html.Label("Model")
-            <input type="text" name="Model" />
+            @Html.Label("Model") <br/>
+            @Html.DropDownList("Model", TempData["Models"] as IEnumerable<SelectListItem>)
         </div>
 
         <div class="editor-label">
-            @Html.Label("State")
-            <input type="number" name="State" />
-        </div>
-        
-        
-        <div class="editor-label">
-            @Html.Label("Color")
-            <input type="number" name="Color" />
-        </div>
-        
-        
-        <div class="editor-label">
-            @Html.Label("Car Number")
-            <input type="number" name="CarNumber" />
+            @Html.Label("Color")<br/>
+            @Html.DropDownList("Color", TempData["Colors"] as IEnumerable<SelectListItem>)
         </div>
 
         <div class="editor-label">
-            @Html.Label("State")
-            <input type="number" name="State" />
+            @Html.Label("State")<br/>
+            @Html.DropDownList("State", TempData["States"] as IEnumerable<SelectListItem>)
+        </div>
+        
+        <div class="editor-label">
+            @Html.Label("Car Number")<br/>
+            <input type="text" name="CarNumber" />
         </div>
 
+        <div class="editor-label">
+            @Html.Label("Car dealer Name")<br/>
+            @Html.DropDownList("CarDealerId", TempData["CarDealersData"] as IEnumerable<SelectListItem>)
+        </div>
+        
         <br />
+        
         <p>
             <input type="button" value="Search" onclick="submitFormGetPartView('SearchForm', 'dataContainer');" />
         </p>

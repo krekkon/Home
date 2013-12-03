@@ -20,7 +20,7 @@ namespace CarDealerProject.Models
         public virtual string Name { get; set; }
 
         [Required]
-        [BirthDate(ErrorMessage = "The date must be greater than 01/01/1886 and lower than the actual Date.")]
+        [BirthDate]
         public virtual DateTime DateOfBirth { get; set; }
 
         [Required]

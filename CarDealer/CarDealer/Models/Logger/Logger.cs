@@ -9,5 +9,11 @@ namespace CarDealerProject.Models.Logger
             //TODO Logging with log4net or other
             return messagePrefix + ex.Message;
         }
+
+        public static string LogWarning(string messagePrefix)
+        {
+            //TODO Logging with log4net or other
+            return messagePrefix;
+        }
     }
 }

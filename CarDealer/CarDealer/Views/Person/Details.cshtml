@@ -1,72 +1,62 @@
 ﻿@model CarDealerProject.Models.Person
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<fieldset>
+    <legend>Person</legend>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <fieldset>
-        <legend>Person</legend>
-    
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.IDCardNumber)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.IDCardNumber)
-        </div>
-    
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.Name)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Name)
-        </div>
-    
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.DateOfBirth)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </div>
-    
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.MotherName)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.MotherName)
-        </div>
-    
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.AddressID)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.AddressID)
-        </div>
-    
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.Telephone)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Telephone)
-        </div>
-    
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.Email)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Email)
-        </div>
-    </fieldset>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.IDCardNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IDCardNumber)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.DateOfBirth)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfBirth)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.MotherName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MotherName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.AddressID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AddressID)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Telephone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telephone)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
         @Html.ActionLink("Back to List", "All")
-    </p>
-</body>
-</html>
+</p>

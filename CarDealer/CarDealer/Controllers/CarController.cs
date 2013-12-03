@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using CarDealerProject.Models;
+using CarDealerProject.Models.Helpers;
 using CarDealerProject.Models.Logger;
 using CarDealerProject.Models.Nhibernate;
 using NHibernate.Criterion;
@@ -36,6 +37,12 @@ namespace CarDealerProject.Controllers
         //[Authorize(Users = "krekkon, John", Roles = "Officers, Admins")]
         public ActionResult Create(Car car)
         {
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = Logger.LogWarning("Invalid data.");
+                return View("Index");
+            }
+
             try
             {
                 nHibertnateSession.AddItem(car);
@@ -50,9 +57,13 @@ namespace CarDealerProject.Controllers
 
         public ActionResult All()
         {
+            FillTempData();
+
             var data = nHibertnateSession.GetAll<Car>().ToList();
             return View("All", data);
         }
+
+
 
         //[Authorize(Users = "krekkon, John", Roles = "Officers, Admins")]
         public ActionResult Edit(int id)
@@ -66,8 +77,11 @@ namespace CarDealerProject.Controllers
         //[Authorize(Users = "krekkon, John", Roles = "Officers, Admins")]
         public ActionResult Edit(int id, Car car)
         {
-            //if (!ModelState.IsValid)
-            //    return RedirectToAction("Edit");
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = Logger.LogWarning("Invalid data.");
+                return View("Index");
+            }
 
             try
             {
@@ -111,18 +125,22 @@ namespace CarDealerProject.Controllers
 
         public ActionResult GetAllSimilar(Car sampleItem)
         {
+            sampleItem.Brand = sampleItem.Brand ?? "";
+            sampleItem.Color = sampleItem.Color ?? "";
+            sampleItem.State = sampleItem.State ?? "";
+            sampleItem.Model = sampleItem.Model ?? "";
+            sampleItem.CarNumber = sampleItem.CarNumber ?? "";
+
             List<Car> result;
-            //.Where(Restrictions.On<Person>(p => p.Name).IsLike("Smith%"))
-            //.WhereRestrictionOn(c => c.Name).IsLike("%anna%")
-            //.WhereRestrictionOn(p => Restrictions.On<Person>(r => r.Email).IsLike("%" + sampleItem.Email + "%")))
             using (var session = nHibertnateSession.OpenSession(Activator.CreateInstance<Car>().GetType().Name))
             {
                 result = session.QueryOver<Car>()
-                    .Where(p =>(sampleItem.ManufactureDate == DateTime.MinValue || p.ManufactureDate >= sampleItem.ManufactureDate) &&
-                               (sampleItem.Year == 0 || p.Year >= sampleItem.Year))
-                    .Where(Restrictions.On<Car>(p => p.Brand).IsLike("%" + sampleItem.Brand + "%") &&
-                           Restrictions.On<Car>(p => p.Color).IsLike("%" + sampleItem.Color + "%") &&
-                           Restrictions.On<Car>(p => p.Model).IsLike("%" + sampleItem.Model + "%"))
+                    .Where(p => (sampleItem.CarDealerId == -1 || p.CarDealerId == sampleItem.CarDealerId) &&
+                                (sampleItem.Brand == "" || sampleItem.Brand == p.Brand) &&
+                                (sampleItem.Color == "" || sampleItem.Color == p.Color) &&
+                                (sampleItem.State == "" || sampleItem.State == p.State) &&
+                                (sampleItem.Model == "" || sampleItem.Model == p.Model))
+                    .Where(Restrictions.On<Car>(p => p.CarNumber).IsLike("%" + sampleItem.CarNumber + "%"))
                     .List<Car>().ToList();
             }
 
@@ -136,6 +154,16 @@ namespace CarDealerProject.Controllers
             }
         }
 
-        
+        private void FillTempData()
+        {
+            var tempDataHelper = new TempDataHelper();
+            tempDataHelper.CreatePropertiesFromData();
+
+            TempData["CarDealersData"] = tempDataHelper.CarDealers;
+            TempData["Brands"] = tempDataHelper.Brands;
+            TempData["Models"] = tempDataHelper.Models;
+            TempData["States"] = tempDataHelper.States;
+            TempData["Colors"] = tempDataHelper.Colors;
+        }
     }
 }

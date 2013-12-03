@@ -1,5 +1,13 @@
 ﻿@model CarDealerProject.Models.Car
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#DDCarDealerName").on("change", function () {
+            $("#CarDealerId").val($(this).find('option:selected').val());
+            $("#CarDealerName").val($(this).find('option:selected').text());
+        });
+    });
+</script>
 <div>
     <h3>Create new</h3>
     <br />
@@ -10,7 +18,7 @@
             <legend>Car</legend>
             <div>
                 <br />
-                
+
                 <div class="textSet">
                     <div class="editor-label">
                         @Html.LabelFor(model => model.Brand)
@@ -20,8 +28,8 @@
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.Brand)</span>
                     </div>
                 </div>
-                
-                 <div class="textSet">
+
+                <div class="textSet">
                     <div class="editor-label">
                         @Html.LabelFor(model => model.Model)
                     </div>
@@ -31,26 +39,19 @@
                     </div>
                 </div>
                 
-                <div class="textSet">
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.CarDealerId)
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.CarDealerId)
-                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.CarDealerId)</span>
-                    </div>
-                </div>
-                
+                @Html.Hidden("CarDealerId")
+                @Html.Hidden("CarDealerName")
+
+
                 <div class="textSet">
                     <div class="editor-label">
                         @Html.LabelFor(model => model.CarDealerName)
                     </div>
                     <div class="editor-field">
-                        @Html.EditorFor(model => model.CarDealerName)
-                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.CarDealerName)</span>
+                        @Html.DropDownList("DDCarDealerName", TempData["CarDealersData"] as SelectList)
                     </div>
                 </div>
-                
+
                 <div class="textSet">
                     <div class="editor-label">
                         @Html.LabelFor(model => model.CarNumber)
@@ -60,7 +61,7 @@
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.CarNumber)</span>
                     </div>
                 </div>
-                
+
                 <div class="textSet">
                     <div class="editor-label">
                         @Html.LabelFor(model => model.Color)
@@ -70,7 +71,7 @@
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.Color)</span>
                     </div>
                 </div>
-                
+
                 <div class="textSet">
                     <div class="editor-label">
                         @Html.LabelFor(model => model.ManufactureDate)
@@ -80,7 +81,7 @@
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.ManufactureDate)</span>
                     </div>
                 </div>
-                
+
                 <div class="textSet">
                     <div class="editor-label">
                         @Html.LabelFor(model => model.Year)
@@ -90,7 +91,7 @@
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.Year)</span>
                     </div>
                 </div>
-               
+
                 <div class="textSet">
                     <div class="editor-label">
                         @Html.LabelFor(model => model.Owners)
@@ -100,7 +101,7 @@
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.Owners)</span>
                     </div>
                 </div>
-                
+
                 <div class="textSet">
                     <div class="editor-label">
                         @Html.LabelFor(model => model.State)
@@ -110,7 +111,7 @@
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.State)</span>
                     </div>
                 </div>
-                
+
                 <div class="textSet">
                     <div class="editor-label">
                         @Html.LabelFor(model => model.Description)
@@ -120,7 +121,7 @@
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.Description)</span>
                     </div>
                 </div>
-                
+
 
                 <p>
                     <input type="submit" value="Create" />

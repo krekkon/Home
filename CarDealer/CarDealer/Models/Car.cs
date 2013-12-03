@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using CarDealerProject.Models.Attributes;
@@ -20,10 +19,10 @@ namespace CarDealerProject.Models
         public virtual string Model { get; set; }
 
         [Required]
-        [CarYearAttribute(ErrorMessage = "The year must be greater than 1886 and lower than the actual year.")]
+        [CarYearAttribute("1886")]
         public virtual int Year { get; set; }
 
-        [BirthDate(ErrorMessage = "The date must be greater than 01/01/1886 and lower than the actual Date.")]
+        [BirthDate]
         public virtual DateTime ManufactureDate { get; set; }
 
         [Required]
@@ -33,6 +32,7 @@ namespace CarDealerProject.Models
         [StringLength(1000)]
         public virtual string Description { get; set; }
 
+        [Required]
         [StringLength(50)]
         public virtual string Color { get; set; }
 

@@ -25,7 +25,8 @@ a {
 }
 
 .header {
-    margin: 20px 0 30px 0;
+    background: url("/Content/Images/logo.png") no-repeat;
+    height: 90px;
 }
 
     .header h1 {
@@ -49,6 +50,10 @@ a {
         font-size: 18px;
         font-weight: 100;
     }
+
+.menu {
+    margin: 60px 0 0 0;
+}
 
 .content {
     width: 550px;
@@ -103,19 +108,25 @@ a {
     border-left: 1px dotted #aaa;
 }
 
-    .rightmen.rightmenu h2 {
-        border-bottom: 1px dotted #aaa;
-        padding: 10px 0 5px 0;
-        margin-bottom: 10px;
-        color: #B0FFBD;
-        font-size: 16px;
-        font-weight: 100;
-    }
+.rightmen.rightmenu h2 {
+    border-bottom: 1px dotted #aaa;
+    padding: 10px 0 5px 0;
+    margin-bottom: 10px;
+    color: #B0FFBD;
+    font-size: 16px;
+    font-weight: 100;
+}
 
-    .rightmenu ul {
-        list-style-type: none;
-        padding: 0 0 10px 0;
-    }
+.rightmenu ul {
+    list-style-type: none;
+    padding: 0 0 10px 0;
+}
+
+.rightAdvert {
+    background: url("/Content/Images/Kari1.png") no-repeat;
+    float: left;
+    width: 160px;
+}
 
 .footer {
     margin-top: 20px;
@@ -133,6 +144,12 @@ a {
     float: right;
 }
 
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
 .clear {
     clear: both;
 }
@@ -146,8 +163,8 @@ a {
     margin: 10px 3px 10px;
 }
 
-.crop { 
-  overflow:hidden; 
-  text-overflow:ellipsis; 
-  width:100px; 
+.crop {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100px;
 }

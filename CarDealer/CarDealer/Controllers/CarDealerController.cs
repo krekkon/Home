@@ -31,6 +31,12 @@ namespace CarDealerProject.Controllers
         //[Authorize(Users = "krekkon, John", Roles = "Officers, Admins")]
         public ActionResult Create(CarDealer carDealer)
         {
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = Logger.LogWarning("Invalid data.");
+                return View("Index");
+            }
+
             try
             {
                 nHibertnateSession.AddItem(carDealer);
@@ -61,7 +67,10 @@ namespace CarDealerProject.Controllers
         public ActionResult Edit(int id, CarDealer carDealer)
         {
             if (!ModelState.IsValid)
-                return RedirectToAction("Edit");
+            {
+                TempData["ErrorMessage"] = Logger.LogWarning("Invalid data.");
+                return View("Index");
+            }
 
             try
             {

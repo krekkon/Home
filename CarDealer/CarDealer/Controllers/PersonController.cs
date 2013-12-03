@@ -34,6 +34,13 @@ namespace CarDealerProject.Controllers
         //[Authorize(Users = "krekkon, John", Roles = "Officers, Admins")]
         public ActionResult Create(Person person)
         {
+
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = Logger.LogWarning("Invalid data.");
+                return View("Index");
+            }
+
             try
             {
                 nHibertnateSession.AddItem(person);
