@@ -1,0 +1,31 @@
+﻿@model CarDealerProject.Models.CarDealer
+
+@using (Html.BeginForm("GetAllSimilar", "CarDealer", FormMethod.Post, new { id = "SearchForm" }))
+{ 
+    <h3>Search</h3>
+    <br />
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <br />
+        <legend>Car dealer</legend>
+        
+
+        <div class="textSet">
+            @Html.Label("Name")
+            <input type="text" name="Name" />
+        </div>
+
+        <div class="textSet">
+            @Html.Label("Address Id")
+            <input type="text" name="AddressId" />
+        </div>
+
+        <div class="textSet">
+            @Html.Label("Parking places")
+            <input type="number" name="ParkingPlaces" />
+        </div>
+        <p class="textSet">
+            <input type="button" value="Search" onclick="submitFormGetPartView('SearchForm', 'dataContainer');" />
+        </p>
+    </fieldset>
+}

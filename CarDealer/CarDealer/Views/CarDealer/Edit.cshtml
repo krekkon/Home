@@ -1,0 +1,50 @@
+﻿@model CarDealerProject.Models.CarDealer
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    <fieldset>
+        <legend>CarDealer</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AddressId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AddressId)
+            @Html.ValidationMessageFor(model => model.AddressId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ParkingPlaces)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ParkingPlaces)
+            @Html.ValidationMessageFor(model => model.ParkingPlaces)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "All")
+</div>

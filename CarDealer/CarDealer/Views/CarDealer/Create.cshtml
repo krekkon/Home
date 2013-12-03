@@ -1,0 +1,48 @@
+﻿@model CarDealerProject.Models.CarDealer
+
+<div>
+    <h3>Create new</h3>
+    <br />
+    @using (Html.BeginForm("Create", "CarDealer", FormMethod.Post, new { id = "CreateForm" }))
+    { 
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Car dealer</legend>
+            <div>
+                <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Name)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Name)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.Name)</span>
+                    </div>
+                </div>
+
+                <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.AddressId)
+                    </div>
+                    <div>
+                        @Html.EditorFor(model => model.AddressId)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.AddressId)</span>
+                    </div>
+                </div>
+
+                <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.ParkingPlaces)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.ParkingPlaces)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.ParkingPlaces)</span>
+                    </div>
+                </div>
+
+                <p class="textSet">
+                    <input type="submit" value="Create" />
+                </p>
+            </div>
+        </fieldset>
+    }
+</div>

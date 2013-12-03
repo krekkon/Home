@@ -1,0 +1,19 @@
+﻿@model CarDealerProject.Models.Car
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>Are you sure you want to delete this?</h3>
+@{
+    Html.RenderPartial("SingleDataContainer", Model);
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" />|
+        @Html.ActionLink("Back to List", "All")
+    </p>
+}

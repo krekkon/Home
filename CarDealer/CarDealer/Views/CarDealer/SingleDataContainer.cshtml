@@ -1,0 +1,26 @@
+﻿@model CarDealerProject.Models.CarDealer
+
+<fieldset>
+    <legend>CarDealer</legend>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => model.Name)</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => model.AddressId)</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AddressId)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => model.ParkingPlaces)</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ParkingPlaces)
+    </div>
+</fieldset>

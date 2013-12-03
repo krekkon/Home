@@ -1,0 +1,22 @@
+﻿@model CarDealerProject.Models.CarDealer
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="@Url.Content("~/Scripts/JSHelper.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    @if (TempData["ErrorMessage"] != null)
+    {
+        @Html.Raw("showMessageBox('" + @TempData["ErrorMessage"] + "');") 
+    }
+</script>
+
+<div>
+    <h1>Index - CarDealers</h1>
+    <p>
+        <span>@Html.ActionLink("Get Car Dealers", "All")</span>
+    </p>
+</div>

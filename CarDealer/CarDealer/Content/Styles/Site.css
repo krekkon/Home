@@ -1,0 +1,153 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #404347 url("/Content/Images/bg.gif") repeat-x;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #f7f7f7;
+}
+
+a {
+    color: #60C3DB;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+.wrap {
+    width: 980px;
+    margin: 0 auto;
+}
+
+.header {
+    margin: 20px 0 30px 0;
+}
+
+    .header h1 {
+        font-size: 26px;
+        font-weight: 100;
+        letter-spacing: -2px;
+    }
+
+        .header h1 a {
+            color: #FAFFB0;
+            text-decoration: none;
+        }
+
+            .header h1 a:hover {
+                color: #eee;
+                text-decoration: none;
+            }
+
+    .header h2 {
+        color: #999;
+        font-size: 18px;
+        font-weight: 100;
+    }
+
+.content {
+    width: 550px;
+    float: left;
+    padding: 0 20px 20px 20px;
+    border-left: 1px dotted #aaa;
+    text-align: justify;
+}
+
+    .content h2 {
+        color: #B0FFBD;
+        font-size: 16px;
+        font-weight: 100;
+        padding: 10px 0 5px 0;
+        border-bottom: 1px dotted #aaa;
+        margin-bottom: 10px;
+    }
+
+        .content h2 a {
+            color: #B0FFBD;
+            text-decoration: none;
+        }
+
+            .content h2 a:hover {
+                color: #eee;
+            }
+
+.leftmenu {
+    float: left;
+    width: 160px;
+    padding: 0 20px 20px 0;
+}
+
+    .leftmenu h2 {
+        border-bottom: 1px dotted #aaa;
+        padding: 10px 0 5px 0;
+        margin-bottom: 10px;
+        color: #B0FFBD;
+        font-size: 16px;
+        font-weight: 100;
+    }
+
+    .leftmenu ul {
+        list-style-type: none;
+        padding: 0 0 10px 0;
+    }
+
+.rightmenu {
+    float: right;
+    width: 150px;
+    padding: 0 20px 20px 20px;
+    border-left: 1px dotted #aaa;
+}
+
+    .rightmen.rightmenu h2 {
+        border-bottom: 1px dotted #aaa;
+        padding: 10px 0 5px 0;
+        margin-bottom: 10px;
+        color: #B0FFBD;
+        font-size: 16px;
+        font-weight: 100;
+    }
+
+    .rightmenu ul {
+        list-style-type: none;
+        padding: 0 0 10px 0;
+    }
+
+.footer {
+    margin-top: 20px;
+    border-top: 1px dotted #aaa;
+    font-size: 11px;
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 12px;
+}
+
+.textSet {
+    margin: 10px 3px 10px;
+}
+
+.crop { 
+  overflow:hidden; 
+  text-overflow:ellipsis; 
+  width:100px; 
+}

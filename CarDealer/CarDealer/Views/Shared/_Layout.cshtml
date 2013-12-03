@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="@Url.Content("~/Content/Styles/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.8.2.min.js")" type="text/javascript"></script>
+</head>
+<body class="wrap">
+    <div class="header">
+        <h1>Header</h1>
+        <br />
+        @Html.ActionLink("Home", "Index", "Home") |
+        @Html.ActionLink("Car Dealers", "Index", "CarDealer") |
+        @Html.ActionLink("Cars", "Index", "Car") 
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+    
+    <div class="clear"></div>
+
+    <div class="footer">
+        <h1>Footer</h1>
+    </div>
+
+
+</body>
+</html>

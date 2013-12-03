@@ -1,0 +1,131 @@
+﻿@model CarDealerProject.Models.Car
+
+<div>
+    <h3>Create new</h3>
+    <br />
+    @using (Html.BeginForm("Create", "Car", FormMethod.Post, new { id = "CreateForm" }))
+    { 
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Car</legend>
+            <div>
+                <br />
+                
+                <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Brand)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Brand)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.Brand)</span>
+                    </div>
+                </div>
+                
+                 <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Model)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Model)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.Model)</span>
+                    </div>
+                </div>
+                
+                <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.CarDealerId)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.CarDealerId)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.CarDealerId)</span>
+                    </div>
+                </div>
+                
+                <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.CarDealerName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.CarDealerName)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.CarDealerName)</span>
+                    </div>
+                </div>
+                
+                <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.CarNumber)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.CarNumber)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.CarNumber)</span>
+                    </div>
+                </div>
+                
+                <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Color)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Color)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.Color)</span>
+                    </div>
+                </div>
+                
+                <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.ManufactureDate)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.ManufactureDate)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.ManufactureDate)</span>
+                    </div>
+                </div>
+                
+                <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Year)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Year)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.Year)</span>
+                    </div>
+                </div>
+               
+                <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Owners)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Owners)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.Owners)</span>
+                    </div>
+                </div>
+                
+                <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.State)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.State)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.State)</span>
+                    </div>
+                </div>
+                
+                <div class="textSet">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Description)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Description)
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.Description)</span>
+                    </div>
+                </div>
+                
+
+                <p>
+                    <input type="submit" value="Create" />
+                </p>
+            </div>
+        </fieldset>
+    }
+</div>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="CarDealerProject" namespace="CarDealerProject.Models">
+  <class name="Car" table="Car" dynamic-update="true" >
+    <cache usage="read-write"/>
+    <id name="Id" column="Id" type="int">
+      <generator class="native" />
+    </id>
+    <property name="Brand" />
+    <property name="Model" />
+    <property name="Year" />
+    <property name="ManufactureDate" />
+    <property name="State" />
+    <property name="Description" />
+    <property name="Color" />
+    <property name="CarNumber" />   
+    <property name="Owners" />
+    <property name="CarDealerId" />
+    <property name="CarDealerName" />
+  </class>
+</hibernate-mapping>
