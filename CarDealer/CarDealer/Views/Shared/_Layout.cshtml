@@ -12,21 +12,21 @@
 </head>
 <body class="wrap">
     <div class="header center">
-
     </div>
-    <div class="menu">
-            @Html.ActionLink("Home", "Index", "Home") |
-            @Html.ActionLink("Car Dealers", "Index", "CarDealer") |
-            @Html.ActionLink("Cars", "Index", "Car")
-        </div>
+
+    <div class="menu center">
+        <span class="menuItem"> @Html.ActionLink("Home", "Index", "Home")  </span> 
+        <span class="menuItem"> @Html.ActionLink("Car Dealers", "Index", "CarDealer")  </span> 
+        <span class="menuItem"> @Html.ActionLink("Cars", "Index", "Car")</span>
+    </div>
+
     <div>
         @RenderBody()
     </div>
 
     <div class="clear"></div>
 
-    <div class="footer">
-        <h1>Footer</h1>
+    <div class="footer center">
     </div>
 
 

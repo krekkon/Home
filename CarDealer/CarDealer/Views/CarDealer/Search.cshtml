@@ -2,24 +2,23 @@
 
 @using (Html.BeginForm("GetAllSimilar", "CarDealer", FormMethod.Post, new { id = "SearchForm" }))
 { 
-    <h3>Search</h3>
+    <h2>Search</h2>
     <br />
     @Html.AntiForgeryToken()
     <fieldset>
-        <br />
-        <legend>Car dealer</legend>
+        <legend></legend>
         
         <div class="textSet">
             @Html.Label("Name")<br />
             <input type="text" name="Name" />
         </div>
         
-        <div class="textSet">
+        <div class="textSet full-width">
             @Html.Label("Country")<br />
             @Html.DropDownList("Country", TempData["Countries"] as IEnumerable<SelectListItem>)
         </div>
         
-        <div class="textSet">
+        <div class="textSet full-width">
             @Html.Label("City")<br />
             @Html.DropDownList("City", TempData["Cities"] as IEnumerable<SelectListItem>)
         </div>

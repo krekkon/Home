@@ -15,27 +15,47 @@
 
         <div class="textSet">
 
-            <div class="editor-label">
+            <div>
                 @Html.LabelFor(model => model.Name)
             </div>
-            <div class="editor-field">
+            <div>
                 @Html.EditorFor(model => model.Name)
                 @Html.ValidationMessageFor(model => model.Name)
             </div>
         </div>
         
         <div class="textSet">
-            <div class="editor-label">
+            <div>
                 @Html.LabelFor(model => model.ParkingPlaces)
             </div>
-            <div class="editor-field">
+            <div>
                 @Html.EditorFor(model => model.ParkingPlaces)
                 @Html.ValidationMessageFor(model => model.ParkingPlaces)
             </div>
         </div>
+        
+        <div class="textSet">
+            <div>
+                @Html.LabelFor(model => model.Telephone)
+            </div>
+            <div>
+                @Html.EditorFor(model => model.Telephone)
+                <span class="errorMessage">@Html.ValidationMessageFor(model => model.Telephone)</span>
+            </div>
+        </div>
+        
+        <div class="textSet">
+            <div>
+                @Html.LabelFor(model => model.Email)
+            </div>
+            <div>
+                @Html.EditorFor(model => model.Email)
+                <span class="errorMessage">@Html.ValidationMessageFor(model => model.Email)</span>
+            </div>
+        </div>
 
         <div class="textSet">
-            <div class="editor-label">
+            <div>
                 @Html.LabelFor(model => model.Country)
             </div>
             <div>
@@ -45,7 +65,7 @@
         </div>
 
         <div class="textSet">
-            <div class="editor-label">
+            <div>
                 @Html.LabelFor(model => model.City)
             </div>
             <div>
@@ -55,7 +75,7 @@
         </div>
 
         <div class="textSet">
-            <div class="editor-label">
+            <div>
                 @Html.LabelFor(model => model.ZipCode)
             </div>
             <div>
@@ -65,7 +85,7 @@
         </div>
 
         <div class="textSet">
-            <div class="editor-label">
+            <div>
                 @Html.LabelFor(model => model.Street)
             </div>
             <div>
@@ -75,7 +95,7 @@
         </div>
 
         <div class="textSet">
-            <div class="editor-label">
+            <div>
                 @Html.LabelFor(model => model.StreetNumber)
             </div>
             <div>

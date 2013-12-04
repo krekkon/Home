@@ -9,11 +9,11 @@
 
 @using (Html.BeginForm("GetAllSimilar", "Car", FormMethod.Post, new { id = "SearchForm" }))
 { 
-    <h3>Search</h3>
+    <h2>Search</h2>
     <br />
     @Html.AntiForgeryToken()
     <fieldset>
-        <legend>Car</legend>
+        <legend></legend>
 
         <div class="textSet">
             @Html.Label("Brand")<br/>
