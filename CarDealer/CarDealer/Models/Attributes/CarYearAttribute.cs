@@ -15,7 +15,7 @@ namespace CarDealerProject.Models.Attributes
             var inputYear = value as int?;
             var result = (inputYear != null && inputYear >= 1886 && inputYear <= DateTime.Now.Year);
 
-            return result ? new ValidationResult(GetErrorMessage()) : ValidationResult.Success;
+            return result ? ValidationResult.Success : new ValidationResult(GetErrorMessage());
         }
 
         private string GetErrorMessage()

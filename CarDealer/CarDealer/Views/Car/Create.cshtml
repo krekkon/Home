@@ -1,13 +1,24 @@
 ﻿@model CarDealerProject.Models.Car
 
+<script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.js")" type="text/javascript"></script>
+<link href="@Url.Content("~/Content/Themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#DDCarDealerName").on("change", function () {
             $("#CarDealerId").val($(this).find('option:selected').val());
             $("#CarDealerName").val($(this).find('option:selected').text());
         });
+
+        $("#ManufactureDate").val("2013-01-01");
+        $("#Year").val("2013");
+        $("#ManufactureDate").datepicker({ dateFormat: 'yy-mm-dd', showAnim: "fadeIn", changeYear: true, yearRange: '-40:+0', maxDate: '+0d' });
+        $("#Year").datepicker({ dateFormat: 'yy', showAnim: "fadeIn", changeYear: true, maxDate: '+0d' });
     });
 </script>
+
+
 <div>
     <h3>Create new</h3>
     <br />
@@ -38,7 +49,7 @@
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.Model)</span>
                     </div>
                 </div>
-                
+
                 @Html.Hidden("CarDealerId")
                 @Html.Hidden("CarDealerName")
 
