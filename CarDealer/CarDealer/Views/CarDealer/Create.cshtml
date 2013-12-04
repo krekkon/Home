@@ -7,100 +7,63 @@
     @Html.ValidationSummary(true)
     <fieldset>
         <legend></legend>
-        <div>
-            <div class="textSet">
-                <div>
-                    @Html.LabelFor(model => model.Name)
-                </div>
-                <div>
-                    @Html.EditorFor(model => model.Name)
-                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.Name)</span>
-                </div>
-            </div>
-
-            <div class="textSet">
-                <div>
-                    @Html.LabelFor(model => model.ParkingPlaces)
-                </div>
-                <div>
-                    @Html.EditorFor(model => model.ParkingPlaces)
-                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.ParkingPlaces)</span>
-                </div>
-            </div>
-
-            <div class="textSet">
-                <div>
-                    @Html.LabelFor(model => model.Telephone)
-                </div>
-                <div>
-                    @Html.EditorFor(model => model.Telephone)
-                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.Telephone)</span>
-                </div>
-            </div>
-
-            <div class="textSet">
-                <div>
-                    @Html.LabelFor(model => model.Email)
-                </div>
-                <div>
-                    @Html.EditorFor(model => model.Email)
-                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.Email)</span>
-                </div>
-            </div>
-
-            <div class="textSet">
-                <div>
-                    @Html.LabelFor(model => model.Country)
-                </div>
-                <div>
-                    @Html.EditorFor(model => model.Country)
-                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.Country)</span>
-                </div>
-            </div>
-
-            <div class="textSet">
-                <div>
-                    @Html.LabelFor(model => model.City)
-                </div>
-                <div>
-                    @Html.EditorFor(model => model.City)
-                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.City)</span>
-                </div>
-            </div>
-
-            <div class="textSet">
-                <div>
-                    @Html.LabelFor(model => model.ZipCode)
-                </div>
-                <div>
-                    @Html.EditorFor(model => model.ZipCode)
-                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.ZipCode)</span>
-                </div>
-            </div>
-
-            <div class="textSet">
-                <div>
-                    @Html.LabelFor(model => model.Street)
-                </div>
-                <div>
-                    @Html.EditorFor(model => model.Street)
-                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.Street)</span>
-                </div>
-            </div>
-
-            <div class="textSet">
-                <div>
-                    @Html.LabelFor(model => model.StreetNumber)
-                </div>
-                <div>
-                    @Html.EditorFor(model => model.StreetNumber)
-                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.StreetNumber)</span>
-                </div>
-            </div>
-
-            <p class="textSet">
-                <input type="submit" value="Create" />
-            </p>
+        <div class="textSet">
+            <span>@Html.LabelFor(model => model.Name)</span><br />
+            <span>@Html.EditorFor(model => model.Name)</span><br />
+            <span class="errorMessage">@Html.ValidationMessageFor(model => model.Name)</span>
         </div>
+
+        <div class="textSet">
+            <span>@Html.LabelFor(model => model.ParkingPlaces)</span><br />
+            <span>@Html.EditorFor(model => model.ParkingPlaces)</span><br />
+            <span class="errorMessage">@Html.ValidationMessageFor(model => model.ParkingPlaces)</span>
+        </div>
+
+        <div class="textSet">
+            <span>@Html.LabelFor(model => model.Telephone)</span><br />
+            <span>@Html.EditorFor(model => model.Telephone) </span>
+            <br />
+            <span class="errorMessage">@Html.ValidationMessageFor(model => model.Telephone)</span>
+        </div>
+
+        <div class="textSet">
+            <span>@Html.LabelFor(model => model.Email)</span><br />
+            <span>@Html.EditorFor(model => model.Email)</span><br />
+            <span class="errorMessage">@Html.ValidationMessageFor(model => model.Email)</span>
+        </div>
+
+        <div class="textSet">
+            <span>@Html.LabelFor(model => model.Country)</span><br />
+            <span>@Html.EditorFor(model => model.Country)</span><br />
+            <span class="errorMessage">@Html.ValidationMessageFor(model => model.Country)</span>
+        </div>
+
+        <div class="textSet">
+            <span>@Html.LabelFor(model => model.City)</span><br />
+            <span>@Html.EditorFor(model => model.City)</span><br />
+            <span class="errorMessage">@Html.ValidationMessageFor(model => model.City)</span>
+        </div>
+
+        <div class="textSet">
+            <span>@Html.LabelFor(model => model.ZipCode)</span><br />
+            <span>@Html.EditorFor(model => model.ZipCode)</span><br />
+            <span class="errorMessage">@Html.ValidationMessageFor(model => model.ZipCode)</span>
+        </div>
+
+        <div class="textSet">
+            <span>@Html.LabelFor(model => model.Street)</span><br />
+            <span>@Html.EditorFor(model => model.Street)</span><br />
+            <span class="errorMessage">@Html.ValidationMessageFor(model => model.Street)</span>
+        </div>
+
+        <div class="textSet">
+            <span>@Html.LabelFor(model => model.StreetNumber)</span><br />
+            <span>@Html.EditorFor(model => model.StreetNumber)</span><br />
+            <span class="errorMessage">@Html.ValidationMessageFor(model => model.StreetNumber)</span>
+        </div>
+
+        <p class="textSet">
+            <input type="submit" value="Create" />
+        </p>
     </fieldset>
 }

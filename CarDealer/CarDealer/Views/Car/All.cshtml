@@ -10,9 +10,7 @@
     @if (TempData["ErrorMessage"] != null)
     {
         @Html.Raw("showMessageBox('" + @TempData["ErrorMessage"] + "');") 
-    }
-    
-
+    } 
 </script>
 
 <div class="leftmenu">
@@ -24,12 +22,7 @@
 </div>
 
 <div class="rightmenu">
-    @{
-        Html.RenderPartial("Create", new Car());
-    }
-    
+    @{Html.RenderPartial("Create", new Car());}
 </div>
-
-
 
 <div class="clear"></div>

@@ -1,69 +1,47 @@
 ﻿@model CarDealerProject.Models.CarDealer
 
-<fieldset>
-    <legend>CarDealer</legend>
+<div class="content center no-float">
+    <fieldset>
+        <legend>CarDealer</legend>
 
-    <div>
-        <b>@Html.DisplayNameFor(model => model.Name)</b>
-    </div>
-    <div >
-        @Html.DisplayFor(model => model.Name)
-    </div>
+        <div class="left">
+            <span class="label-title">@Html.DisplayNameFor(model => model.Name)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.Name)</span><br />
+            <br />
 
-    <div>
-        <b>@Html.DisplayNameFor(model => model.ParkingPlaces)</b>
-    </div>
-    <div >
-        @Html.DisplayFor(model => model.ParkingPlaces)
-    </div>
-    
-    <div>
-        <b>@Html.DisplayNameFor(model => model.Telephone)</b>
-    </div>
-    <div >
-        @Html.DisplayFor(model => model.Telephone)
-    </div>
-    
-    <div>
-        <b>@Html.DisplayNameFor(model => model.Email)</b>
-    </div>
-    <div >
-        @Html.DisplayFor(model => model.Email)
-    </div>
+            <span class="label-title">@Html.DisplayNameFor(model => model.ParkingPlaces)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.ParkingPlaces)</span><br />
+            <br />
 
-    
-    <div>
-        <b>@Html.DisplayNameFor(model => model.Country)</b>
-    </div>
-    <div >
-        @Html.DisplayFor(model => model.Country)
-    </div>
-    
-    <div>
-        <b>@Html.DisplayNameFor(model => model.City)</b>
-    </div>
-    <div>
-        @Html.DisplayFor(model => model.City)
-    </div>
-    
-    <div>
-        <b>@Html.DisplayNameFor(model => model.ZipCode)</b>
-    </div>
-    <div >
-        @Html.DisplayFor(model => model.ZipCode)
-    </div>
-    
-    <div>
-        <b>@Html.DisplayNameFor(model => model.Street)</b>
-    </div>
-    <div >
-        @Html.DisplayFor(model => model.Street)
-    </div>
-    
-        <div>
-        <b>@Html.DisplayNameFor(model => model.StreetNumber)</b>
-    </div>
-    <div >
-        @Html.DisplayFor(model => model.StreetNumber)
-    </div>
-</fieldset>
+            <span class="label-title">@Html.DisplayNameFor(model => model.Telephone)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.Telephone)</span><br />
+            <br />
+
+            <span class="label-title">@Html.DisplayNameFor(model => model.Email)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.Email)</span><br />
+            <br />
+
+            <span class="label-title">@Html.DisplayNameFor(model => model.Country)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.Country)</span><br />
+            <br />
+
+            <span class="label-title">@Html.DisplayNameFor(model => model.City)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.City)</span><br />
+            <br />
+
+            <span class="label-title">@Html.DisplayNameFor(model => model.ZipCode)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.ZipCode)</span><br />
+            <br />
+
+            <span class="label-title">@Html.DisplayNameFor(model => model.Street)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.Street)</span><br />
+            <br />
+
+            <span class="label-title">@Html.DisplayNameFor(model => model.StreetNumber)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.StreetNumber)</span><br />
+            <br />
+        </div>
+        <div class="right carImage"></div>
+        <div class="clear"></div>
+    </fieldset>
+</div>

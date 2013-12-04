@@ -5,11 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{
-    Html.RenderPartial("SingleDataContainer", Model);
-}
+@{Html.RenderPartial("SingleDataContainer", Model);}
 
-<p>
+<p class="center">
+    <br />
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "All")
+    @Html.ActionLink("Back to List", "All")
 </p>

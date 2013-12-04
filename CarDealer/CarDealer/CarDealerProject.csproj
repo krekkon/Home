@@ -141,6 +141,9 @@
     <Content Include="Content\Images\Footer.png" />
     <Content Include="Content\Images\Kari1.png" />
     <Content Include="Content\Images\Logo.png" />
+    <Content Include="Content\Images\SampleCar.jpg" />
+    <Content Include="Content\Images\SampleCarDealer.jpg" />
+    <Content Include="Content\Images\Welcome.png" />
     <Content Include="Content\old_Site.css" />
     <Content Include="Content\Styles\Site.css" />
     <Content Include="Content\Themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -235,12 +238,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\CarDealer\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Car\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Person\Index.cshtml" />

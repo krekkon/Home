@@ -12,11 +12,12 @@
         });
 
         setDefaultDateVaules();
-        
+        setDealerProps();
+
         $("#ManufactureDate").datepicker({ dateFormat: 'yy-mm-dd', showAnim: "fadeIn", changeYear: true, yearRange: '-40:+0', maxDate: '+0d' });
         $("#Year").datepicker({ dateFormat: 'yy', showAnim: "fadeIn", changeYear: true, maxDate: '+0d' });
     });
-    
+
     function setDefaultDateVaules() {
         $("#ManufactureDate").val("2013-01-01");
         $("#Year").val("2013");
@@ -42,23 +43,15 @@
                 <br />
 
                 <div class="textSet">
-                    <div>
-                        @Html.LabelFor(model => model.Brand)
-                    </div>
-                    <div>
-                        @Html.EditorFor(model => model.Brand)
-                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.Brand)</span>
-                    </div>
+                    <span>@Html.LabelFor(model => model.Brand)</span><br />
+                    <span>@Html.EditorFor(model => model.Brand)</span><br />
+                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.Brand)</span>
                 </div>
 
                 <div class="textSet">
-                    <div>
-                        @Html.LabelFor(model => model.Model)
-                    </div>
-                    <div>
-                        @Html.EditorFor(model => model.Model)
-                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.Model)</span>
-                    </div>
+                    <span>@Html.LabelFor(model => model.Model)</span><br />
+                    <span>@Html.EditorFor(model => model.Model)</span><br />
+                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.Model)</span>
                 </div>
 
                 @Html.Hidden("CarDealerId")
@@ -66,88 +59,53 @@
 
 
                 <div class="textSet">
-                    <div>
-                        @Html.LabelFor(model => model.CarDealerName)
-                    </div>
-                    <div>
-                        @Html.DropDownList("DDCarDealerName", TempData["CarDealersData"] as SelectList)
-                    </div>
+                    <span>@Html.LabelFor(model => model.CarDealerName)</span><br />
+                    <span>@Html.DropDownList("DDCarDealerName", TempData["CarDealersData"] as SelectList)</span><br />
                 </div>
-
+                
                 <div class="textSet">
-                    <div>
-                        @Html.LabelFor(model => model.CarNumber)
-                    </div>
-                    <div>
-                        @Html.EditorFor(model => model.CarNumber)
-                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.CarNumber)</span>
-                    </div>
+                    <span>@Html.LabelFor(model => model.CarNumber)</span><br />
+                    <span>@Html.EditorFor(model => model.CarNumber)</span><br />
+                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.CarNumber)</span>
                 </div>
-
+                
                 <div class="textSet">
-                    <div>
-                        @Html.LabelFor(model => model.Color)
-                    </div>
-                    <div>
-                        @Html.EditorFor(model => model.Color)
-                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.Color)</span>
-                    </div>
+                    <span>@Html.LabelFor(model => model.Color)</span><br />
+                    <span>@Html.EditorFor(model => model.Color)</span><br />
+                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.Color)</span>
                 </div>
-
+                
                 <div class="textSet">
-                    <div>
-                        @Html.LabelFor(model => model.ManufactureDate)
-                    </div>
-                    <div>
-                        @Html.EditorFor(model => model.ManufactureDate)
-                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.ManufactureDate)</span>
-                    </div>
+                    <span>@Html.LabelFor(model => model.ManufactureDate)</span><br />
+                    <span>@Html.EditorFor(model => model.ManufactureDate)</span><br />
+                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.ManufactureDate)</span>
                 </div>
-
+                
                 <div class="textSet">
-                    <div>
-                        @Html.LabelFor(model => model.Year)
-                    </div>
-                    <div>
-                        @Html.EditorFor(model => model.Year)
-                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.Year)</span>
-                    </div>
+                    <span>@Html.LabelFor(model => model.Year)</span><br />
+                    <span>@Html.EditorFor(model => model.Year)</span><br />
+                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.Year)</span>
                 </div>
-
+                
                 <div class="textSet">
-                    <div>
-                        @Html.LabelFor(model => model.Owners)
-                    </div>
-                    <div>
-                        @Html.EditorFor(model => model.Owners)
-                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.Owners)</span>
-                    </div>
+                    <span>@Html.LabelFor(model => model.Owners)</span><br />
+                    <span>@Html.EditorFor(model => model.Owners)</span><br />
+                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.Owners)</span>
                 </div>
-
+                
                 <div class="textSet">
-                    <div>
-                        @Html.LabelFor(model => model.State)
-                    </div>
-                    <div>
-                        @Html.EditorFor(model => model.State)
-                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.State)</span>
-                    </div>
+                    <span>@Html.LabelFor(model => model.State)</span><br />
+                    <span>@Html.EditorFor(model => model.State)</span><br />
+                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.State)</span>
                 </div>
-
+                
                 <div class="textSet">
-                    <div>
-                        @Html.LabelFor(model => model.Description)
-                    </div>
-                    <div>
-                        @Html.EditorFor(model => model.Description)
-                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.Description)</span>
-                    </div>
+                    <span>@Html.LabelFor(model => model.Description)</span><br />
+                    <span>@Html.EditorFor(model => model.Description)</span><br />
+                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.Description)</span>
                 </div>
 
-
-                <p>
-                    <input type="submit" value="Create" />
-                </p>
+                <input type="submit" value="Create" />
             </div>
         </fieldset>
     }

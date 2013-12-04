@@ -3,26 +3,25 @@
 <h2>Cars</h2>
 <table>
     <tr>
-        <th style="width: 50px;">
+        <th>
             @Html.DisplayNameFor(model => model.Brand)
         </th>
-        <th style="width: 50px;">
+        <th >
             @Html.DisplayNameFor(model => model.Model)
         </th>
-        <th style="width: 50px;">
+        <th>
             @Html.DisplayNameFor(model => model.Year)
         </th>
-        <th style="width: 55px;">
+        <th>
             @Html.DisplayNameFor(model => model.State)
         </th>
-        <th style="width: 60px;">
+        <th>
             @Html.DisplayNameFor(model => model.Color)
         </th>
-        <th style="width: 80px;">
+        <th>
             @Html.DisplayNameFor(model => model.CarNumber)
         </th>
-
-        <th style="width: 150px;">
+        <th>
             @Html.DisplayNameFor(model => model.CarDealerName)
         </th>
         <th></th>
@@ -31,26 +30,26 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td class="crop" style="width: 70px;">
                 @Html.DisplayFor(modelItem => item.Brand)
             </td>
-            <td>
+            <td class="crop" style="width: 60px;">
                 @Html.DisplayFor(modelItem => item.Model)
             </td>
-            <td>
+            <td class="crop" style="width: 50px;">
                 @Html.DisplayFor(modelItem => item.Year)
             </td>
-            <td>
+            <td class="crop" style="width: 60px;">
                 @Html.DisplayFor(modelItem => item.State)
             </td>
-            <td>
+            <td class="crop" style="width: 60px;">
                 @Html.DisplayFor(modelItem => item.Color)
             </td>
-            <td>
+            <td class="crop" style="width: 80px;">
                 @Html.DisplayFor(modelItem => item.CarNumber)
             </td>
-            <td>
-                @Html.ActionLink(item.CarDealerName, "Details", "CarDealer", new { id = item.CarDealerId }, null)
+            <td class="crop" style="width: 130px;">
+                @Html.ActionLink(item.CarDealerName, "Details", "CarDealer", new { id = item.CarDealerId }, new object())
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

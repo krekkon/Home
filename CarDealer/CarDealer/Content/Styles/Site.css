@@ -22,7 +22,6 @@ select {
 th {
     text-decoration: underline;
     font-size: 12px;
-    padding: 1px 1px 1px 1px;
 }
 
 fieldset {
@@ -38,9 +37,9 @@ legend {
     font-size: 20px;
 }
 
-    a:hover {
-        text-decoration: underline;
-    }
+a:hover {
+    text-decoration: underline;
+}
 
 .wrap {
     width: 1080px;
@@ -84,11 +83,44 @@ legend {
     margin: 0 20px 0 0;
 }
 
+
+
+.welcome {
+    background: url("/Content/Images/Welcome.png") no-repeat;
+    width: 670px;
+    height: 300px;
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carDealerImage {
+    background: url("/Content/Images/sampleCarDealer.jpg") no-repeat;
+    margin: 0 12px 0 0;
+    width: 400px;
+    height: 200px;
+    float: right;
+}
+
+.carImage {
+    background: url("/Content/Images/sampleCar.jpg") no-repeat;
+    margin: 0 12px 0 0;
+    width: 400px;
+    height: 200px;
+    float: right;
+}
+
+.content-width {
+    width: 667px;
+}
+
 .content {
     width: 667px;
     float: left;
     padding: 0 20px 20px 20px;
     border-left: 1px dotted #B0FFBD;
+    border-left: 1px dotted #B0FFBD;
+    border-right: 1px dotted #B0FFBD;
     text-align: justify;
 }
 
@@ -134,22 +166,21 @@ legend {
     float: right;
     width: 150px;
     padding: 0 20px 20px 20px;
-    border-left: 1px dotted #B0FFBD;
 }
 
-.rightmenu.rightmenu h2 {
-    border-bottom: 1px dotted #B0FFBD;
-    padding: 10px 0 5px 0;
-    margin-bottom: 10px;
-    color: #B0FFBD;
-    font-size: 16px;
-    font-weight: 100;
-}
+    .rightmenu.rightmenu h2 {
+        border-bottom: 1px dotted #B0FFBD;
+        padding: 10px 0 5px 0;
+        margin-bottom: 10px;
+        color: #B0FFBD;
+        font-size: 16px;
+        font-weight: 100;
+    }
 
-.rightmenu ul {
-    list-style-type: none;
-    padding: 0 0 10px 0;
-}
+    .rightmenu ul {
+        list-style-type: none;
+        padding: 0 0 10px 0;
+    }
 
 .rightAdvert {
     background: url("/Content/Images/Kari1.png") no-repeat;
@@ -160,11 +191,18 @@ legend {
 .footer {
     background: url("/Content/Images/footer.png") no-repeat;
     height: 70px;
-
     margin-top: 20px;
     border-top: 1px dotted #B0FFBD;
     font-size: 11px;
     text-align: center;
+}
+
+.clear {
+    clear: both;
+}
+
+.no-float {
+    float: none;
 }
 
 .left {
@@ -181,9 +219,7 @@ legend {
     width: 80%;
 }
 
-.clear {
-    clear: both;
-}
+
 
 .errorMessage {
     color: red;

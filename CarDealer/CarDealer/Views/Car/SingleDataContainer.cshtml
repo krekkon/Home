@@ -1,68 +1,50 @@
 ﻿@model CarDealerProject.Models.Car
 
-<fieldset>
-    <legend>Car</legend>
+<div class="content center no-float">
+    <fieldset>
+        <legend>Car</legend>
 
-    <div class="label-title">
-        @Html.DisplayNameFor(model => model.Brand)
-    </div>
-    <div class="label-text">
-        @Html.DisplayFor(model => model.Brand)
-    </div>
+        <div class="left">
 
-    <div class="label-title">
-        @Html.DisplayNameFor(model => model.Model)
-    </div>
-    <div class="label-text">
-        @Html.DisplayFor(model => model.Model)
-    </div>
+            <span class="label-title">@Html.DisplayNameFor(model => model.Brand)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.Brand)</span><br />
+            <br />
 
-    <div class="label-title">
-        @Html.DisplayNameFor(model => model.Year)
-    </div>
-    <div class="label-text">
-        @Html.DisplayFor(model => model.Year)
-    </div>
+            <span class="label-title">@Html.DisplayNameFor(model => model.Model)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.Model)</span><br />
+            <br />
 
-    <div class="label-title">
-        @Html.DisplayNameFor(model => model.ManufactureDate)
-    </div>
-    <div class="label-text">
-        @Html.DisplayFor(model => model.ManufactureDate)
-    </div>
+            <span class="label-title">@Html.DisplayNameFor(model => model.Year)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.Year)</span><br />
+            <br />
 
-    <div class="label-title">
-        @Html.DisplayNameFor(model => model.State)
-    </div>
-    <div class="label-text">
-        @Html.DisplayFor(model => model.State)
-    </div>
+            <span class="label-title">@Html.DisplayNameFor(model => model.ManufactureDate)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.ManufactureDate)</span><br />
+            <br />
 
-    <div class="label-title">
-        @Html.DisplayNameFor(model => model.Description)
-    </div>
-    <div class="label-text crop" style="width: 400px">
-        @Html.DisplayFor(model => model.Description)
-    </div>
+            <span class="label-title">@Html.DisplayNameFor(model => model.State)</span><br />
+            <span class="label-text">@Html.DisplayFor(model => model.State)</span><br />
+            <br />
+        </div>
 
-    <div class="label-title">
-        @Html.DisplayNameFor(model => model.Color)
-    </div>
-    <div class="label-text">
-        @Html.DisplayFor(model => model.Color)
-    </div>
+        <div class="right carDealerImage"></div>
+        <div class="clear"></div>
 
-    <div class="label-title">
-        @Html.DisplayNameFor(model => model.CarNumber)
-    </div>
-    <div class="label-text">
-        @Html.DisplayFor(model => model.CarNumber)
-    </div>
+        <span class="label-title">@Html.DisplayNameFor(model => model.Description)</span><br />
+        <p class="label-text content-width">@Html.DisplayFor(model => model.Description)</p>
+        <br />
 
-    <div class="label-title">
-        @Html.DisplayNameFor(model => model.CarDealerId)
-    </div>
-    <div class="label-text">
-        @Html.DisplayFor(model => model.CarDealerId)
-    </div>
-</fieldset>
+        <span class="label-title">@Html.DisplayNameFor(model => model.Color)</span><br />
+        <span class="label-text">@Html.DisplayFor(model => model.Color)</span><br />
+        <br />
+
+        <span class="label-title">@Html.DisplayNameFor(model => model.CarNumber)</span><br />
+        <span class="label-text">@Html.DisplayFor(model => model.CarNumber)</span><br />
+        <br />
+
+        <span class="label-title">@Html.DisplayNameFor(model => model.CarDealerId)</span><br />
+        <span class="label-text">@Html.DisplayFor(model => model.CarDealerId)</span><br />
+        <br />
+
+    </fieldset>
+</div>
