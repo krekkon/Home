@@ -13,42 +13,39 @@
     <br />
     @Html.AntiForgeryToken()
     <fieldset>
-        <br />
         <legend>Car</legend>
 
-        <div class="editor-label">
+        <div class="textSet">
             @Html.Label("Brand")<br/>
             @Html.DropDownList("Brand", TempData["Brands"] as IEnumerable<SelectListItem>)
         </div>
 
-        <div class="editor-label">
+        <div class="textSet">
             @Html.Label("Model") <br/>
             @Html.DropDownList("Model", TempData["Models"] as IEnumerable<SelectListItem>)
         </div>
 
-        <div class="editor-label">
+        <div class="textSet">
             @Html.Label("Color")<br/>
             @Html.DropDownList("Color", TempData["Colors"] as IEnumerable<SelectListItem>)
         </div>
 
-        <div class="editor-label">
+        <div class="textSet">
             @Html.Label("State")<br/>
             @Html.DropDownList("State", TempData["States"] as IEnumerable<SelectListItem>)
         </div>
         
-        <div class="editor-label">
+        <div class="textSet">
             @Html.Label("Car Number")<br/>
             <input type="text" name="CarNumber" />
         </div>
 
-        <div class="editor-label">
+        <div class="textSet">
             @Html.Label("Car dealer Name")<br/>
             @Html.DropDownList("CarDealerId", TempData["CarDealersData"] as IEnumerable<SelectListItem>)
         </div>
         
-        <br />
-        
-        <p>
+        <p class="textSet">
             <input type="button" value="Search" onclick="submitFormGetPartView('SearchForm', 'dataContainer');" />
         </p>
     </fieldset>

@@ -111,6 +111,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AbstractController.cs" />
     <Compile Include="Controllers\CarDealerController.cs" />
     <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

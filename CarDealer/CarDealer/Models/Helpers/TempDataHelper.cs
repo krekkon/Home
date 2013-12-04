@@ -10,18 +10,50 @@ namespace CarDealerProject.Models.Helpers
     {
         private readonly INHibertnateSession nHibernateSession;
 
+        /// <summary>
+        /// Car Property
+        /// </summary>
         public IEnumerable<SelectListItem> Colors { get; private set; }
+
+        /// <summary>
+        /// Car Property
+        /// </summary>
         public IEnumerable<SelectListItem> Brands { get; private set; }
+
+        /// <summary>
+        /// Car Property
+        /// </summary>
         public IEnumerable<SelectListItem> Models { get; private set; }
+
+        /// <summary>
+        /// Car Property
+        /// </summary>
         public IEnumerable<SelectListItem> States { get; private set; }
-        public IEnumerable<SelectListItem> CarDealers { get { return GetCarDealers(); }}
+
+        /// <summary>
+        /// Car Property
+        /// </summary>
+        public IEnumerable<SelectListItem> CarDealers { get { return GetCarDealersForCars(); }}
+
+        /// <summary>
+        /// Car Dealer Property
+        /// </summary>
+        public IEnumerable<SelectListItem> Countries { get; private set; }
+
+        /// <summary>
+        /// Car Dealer Property
+        /// </summary>
+        public IEnumerable<SelectListItem> Cities { get; private set; }
 
         public TempDataHelper()
         {
             nHibernateSession = new NHibertnateSession();
         }
 
-        public void CreatePropertiesFromData()
+        /// <summary>
+        /// Car Method
+        /// </summary>
+        public void CreateCarProperties()
         {
             using (var session = nHibernateSession.OpenSession(Activator.CreateInstance<Car>().GetType().Name))
             {
@@ -47,7 +79,10 @@ namespace CarDealerProject.Models.Helpers
             }
         }
 
-        private IEnumerable<SelectListItem> GetCarDealers()
+        /// <summary>
+        /// Car Method
+        /// </summary>
+        private IEnumerable<SelectListItem> GetCarDealersForCars()
         {
             using (var session = nHibernateSession.OpenSession(Activator.CreateInstance<CarDealer>().GetType().Name))
             {
@@ -60,6 +95,31 @@ namespace CarDealerProject.Models.Helpers
                                             Name = (string) properties[1],
                                         });
                 return new SelectList(result.ToList(), "Id", "Name");
+            }
+        }
+
+        /// <summary>
+        /// Car Dealer Method
+        /// </summary>
+        public void CreateCarDealerProperties()
+        {
+            using (var session = nHibernateSession.OpenSession(Activator.CreateInstance<CarDealer>().GetType().Name))
+            {
+
+                var result = session.QueryOver<CarDealer>()
+                                    .Select(c => c.Country, c => c.City)
+                                    .List<object[]>()
+                                    .Select(properties => new
+                                    {
+                                        Country = (string)properties[0],
+                                        City = (string)properties[1],
+                                    });
+
+                var enumerable = result.ToList();
+                enumerable.Insert(0, new { Country = "", City = "" });
+
+                Countries = new SelectList(enumerable.Select(item => item.Country).Distinct());
+                Cities = new SelectList(enumerable.Select(item => item.City).Distinct());
             }
         }
     }

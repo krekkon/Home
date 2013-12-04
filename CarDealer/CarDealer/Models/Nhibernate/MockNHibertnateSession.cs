@@ -20,6 +20,11 @@ namespace CarDealerProject.Models.Nhibernate
             throw new System.NotImplementedException();
         }
 
+        public void Delete<T>(List<T> carDealer)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Update<T>(int id, T carDealer)
         {
             throw new System.NotImplementedException();

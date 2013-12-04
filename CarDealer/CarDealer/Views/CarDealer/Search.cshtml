@@ -10,19 +10,25 @@
         <legend>Car dealer</legend>
         
         <div class="textSet">
-            @Html.Label("Name")
+            @Html.Label("Name")<br />
             <input type="text" name="Name" />
         </div>
-
+        
         <div class="textSet">
-            @Html.Label("Address Id")
-            <input type="text" name="AddressId" />
+            @Html.Label("Country")<br />
+            @Html.DropDownList("Country", TempData["Countries"] as IEnumerable<SelectListItem>)
         </div>
-
+        
         <div class="textSet">
-            @Html.Label("Parking places")
-            <input type="number" name="ParkingPlaces" />
+            @Html.Label("City")<br />
+            @Html.DropDownList("City", TempData["Cities"] as IEnumerable<SelectListItem>)
         </div>
+        
+        <div class="textSet">
+            @Html.Label("Street")<br />
+            <input type="text" name="Street" />
+        </div>
+        
         <p class="textSet">
             <input type="button" value="Search" onclick="submitFormGetPartView('SearchForm', 'dataContainer');" />
         </p>

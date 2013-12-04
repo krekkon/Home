@@ -8,7 +8,11 @@
     <property name="Name" />
     <property name="Email" />
     <property name="Telephone" />
-    <property name="AddressId" />
     <property name="ParkingPlaces" />
+    <property name="Country" />
+    <property name="City" />
+    <property name="ZipCode" />
+    <property name="Street" />
+    <property name="StreetNumber" />
   </class>
 </hibernate-mapping>

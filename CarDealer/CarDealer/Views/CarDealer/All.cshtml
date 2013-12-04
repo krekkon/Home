@@ -6,6 +6,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script type="text/javascript">
+    @if (TempData["ErrorMessage"] != null)
+    {
+        @Html.Raw("showMessageBox('" + @TempData["ErrorMessage"] + "');") 
+    }
+</script>
+
 <div class="leftmenu">
     @{Html.RenderPartial("Search", new CarDealer());}
 </div>

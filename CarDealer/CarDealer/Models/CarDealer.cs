@@ -12,10 +12,6 @@ namespace CarDealerProject.Models
         [StringLength(200)]
         public virtual string Name { get; set; }
 
-        [Display(Name = "Address ID")]
-        [Required]
-        public virtual int AddressId { get; set; }
-
         [Display(Name = "Parking places")]
         [Required]
         [Range(0, int.MaxValue)]
@@ -25,38 +21,25 @@ namespace CarDealerProject.Models
         [StringLength(50)]
         public virtual string Telephone { get; set; }
 
-        //Validate
+        //Validate?
         [StringLength(200)]
+        [EmailAddress]
         public virtual string Email { get; set; }
 
-        //Munkarend
+        //Validate
+        [StringLength(200)]
+        public virtual string Country { get; set; }
 
-        //public bool IsValid()
-        //{
-        //    if (this.GetErrors().Count == 0)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
+        [StringLength(200)]
+        public virtual string City { get; set; }
 
-        //public List<Error> GetErrors()
-        //{
-        //    List<Error> Errors = new List<Error>();
+        [StringLength(10)]
+        public virtual string ZipCode { get; set; }
 
-        //    if (String.IsNullOrEmpty(this.Title))
-        //    {
-        //        Errors.Add(
-        //          new Error
-        //          {
-        //              Description = "Title cannot be blank",
-        //              Property = "Title"
-        //          });
-        //    }
-        //    return Errors;
-        //} 
+        [StringLength(200)]
+        public virtual string Street { get; set; }
+
+        [StringLength(50)]
+        public virtual string StreetNumber { get; set; }
     }
 }

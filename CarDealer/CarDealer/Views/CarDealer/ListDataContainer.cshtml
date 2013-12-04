@@ -1,39 +1,73 @@
 ﻿@model IEnumerable<CarDealerProject.Models.CarDealer>
 
-    <h2>Car dealers</h2>
-    <table id="CarDealersTable">
+<script>
+    
+    //TODO LATER
+    //$(document).ready(function () {
+
+    //    $('#deleteAllSelected').on('click', function() {
+    //        var ids = [];
+
+    //        $('input:checked').each(function() {
+    //            ids.push(this.id);
+    //        });
+    //        $("#ids").val(ids);
+    //        submitFormGetPartView();
+    //    });
+        
+    //    function submitFormGetPartView() {
+    //        var jdata = { 'ids': [] };
+    //        $('input:checked').each(function() {
+    //            jdata['ids'].push(this.id);
+    //        });
+            
+    //        $.post({
+    //            url: "DeleteAll",
+    //            type: "POST",
+    //            dataType: "json",
+    //            traditional: true,
+    //            data: jdata
+    //        });
+    //    }
+    //})
+   
+</script>
+
+<h2>Car dealers</h2>
+<table id="CarDealersTable" class="left">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParkingPlaces)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AddressId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ParkingPlaces)
-            </th>
-            <th></th>
+            <td class="crop" style="width: 150px; margin-right: 3px">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td class="crop" style="width: 100px; margin-right: 3px">
+                @Html.DisplayFor(modelItem => item.ParkingPlaces)
+            </td>
+            <td class="crop" style="width: 150px; margin-right: 3px">
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
         </tr>
+    }
 
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td class="crop" style="width:200px">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AddressId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ParkingPlaces)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }
-
-    </table>
+</table>

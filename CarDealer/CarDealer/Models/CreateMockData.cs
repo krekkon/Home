@@ -53,7 +53,6 @@ namespace CarDealerProject.Models
             {
                 mockCarDealers.Add(new CarDealer
                     {
-                        AddressId = i,
                         Id = i,
                         Name = "CarDealer(" + i + ")",
                         ParkingPlaces = i * 20
