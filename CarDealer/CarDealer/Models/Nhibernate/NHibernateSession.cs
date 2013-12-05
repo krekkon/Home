@@ -9,7 +9,7 @@ using NHibernate.Linq;
 
 namespace CarDealerProject.Models.Nhibernate
 {
-    public class NHibertnateSession : INHibertnateSession
+    public class NHibernateSession : INHibernateSession
     {
         public ISession OpenSession(string modelTypeName)
         {
@@ -42,9 +42,7 @@ namespace CarDealerProject.Models.Nhibernate
 
         public T Get<T>(int id)
         {
-            var tType = Activator.CreateInstance<T>();
-
-            using (var session = OpenSession(tType.GetType().Name))
+            using (var session = OpenSession(Activator.CreateInstance<T>().GetType().Name))
             {
                 return session.Get<T>(id);
             }
@@ -52,9 +50,7 @@ namespace CarDealerProject.Models.Nhibernate
 
         public void Update<T>(int id, T modifiedItem)
         {
-            var tType = Activator.CreateInstance<T>();
-
-            using (var session = OpenSession(tType.GetType().Name))
+            using (var session = OpenSession(modifiedItem.GetType().Name))
             {
                 var itemtoUpdate = session.Get<T>(id);
 
@@ -71,7 +67,7 @@ namespace CarDealerProject.Models.Nhibernate
 
         public void Delete<T>(T item)
         {
-            using (var session = OpenSession(Activator.CreateInstance<T>().GetType().Name))
+            using (var session = OpenSession(item.GetType().Name))
             {
                 using (var transaction = session.BeginTransaction())
                 {

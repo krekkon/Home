@@ -18,14 +18,13 @@ namespace CarDealerProject.Models.Attributes
             return result ? ValidationResult.Success : new ValidationResult(GetErrorMessage());
         }
 
-        private string GetErrorMessage()
+        private static string GetErrorMessage()
         {
             return "The year must be greater than 1886 and lower than the actual year.";
         }
 
         public override string FormatErrorMessage(string name)
         {
-            //note that the display name for the field is passed to the 'name' argument
             return string.Format(GetErrorMessage(), name);
         }
     }

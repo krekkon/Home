@@ -3,7 +3,7 @@ using NHibernate;
 
 namespace CarDealerProject.Models.Nhibernate
 {
-    public interface INHibertnateSession
+    public interface INHibernateSession
     {
         ISession OpenSession(string modelTypeName);
         IEnumerable<T> GetAll<T>();

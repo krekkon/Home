@@ -10,7 +10,8 @@
     $(document).ready(function () {
         @if (TempData["ErrorMessage"] != null)
         {
-            @Html.Raw("showMessageBox('Warning','" + @TempData["ErrorMessage"] + "');") 
+            var formattedMessage = MvcHtmlString.Create(Html.Encode(TempData["ErrorMessage"]));
+            @Html.Raw("showMessageBox('Warning','" + formattedMessage + "');")
         }
     });
 </script>

@@ -2,7 +2,7 @@
 
 namespace CarDealerProject.Controllers
 {
-    public class PersonController : AbstractController<CarDealer>
+    public class PersonController 
     {
         //
         // GET: /Persons/

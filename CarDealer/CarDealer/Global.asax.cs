@@ -2,6 +2,9 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using CarDealerProject.App_Start;
+using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Configuration;
+using Unity.Mvc4;
 
 namespace CarDealerProject
 {
@@ -16,6 +19,9 @@ namespace CarDealerProject
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            var container = new UnityContainer().LoadConfiguration();
+            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
 }

@@ -9,11 +9,11 @@ namespace CarDealerProject.Controllers
 {
     public abstract class AbstractController<T> : Controller where T : class
     {
-        protected readonly INHibertnateSession NHibertnateSession;
+        protected readonly INHibernateSession NHibernateSession;
 
-        protected AbstractController()
+        protected AbstractController(INHibernateSession nHibernateSession)
         {
-            NHibertnateSession = new NHibertnateSession();
+            NHibernateSession = nHibernateSession;
         }
 
         public ActionResult Index()
@@ -21,58 +21,53 @@ namespace CarDealerProject.Controllers
             return RedirectToAction("All");
         }
 
-        [HttpPost]
-        //[Authorize(Users = "krekkon, John", Roles = "Officers, Admins")]
-        public ActionResult Create(T item)
+        public ActionResult All()
         {
-            if (!ModelState.IsValid)
-            {
-                TempData["ErrorMessage"] = Logger.LogWarning("Invalid data.");
-                return RedirectToAction("All");
-            }
-
             try
             {
-                NHibertnateSession.AddItem(item);
+                FillTempData();
+                var data = NHibernateSession.GetAll<T>().ToList();
+                return View("All", data);
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = Logger.LogError("An error occured during the Create procedure. Error Message:", ex);
-            }
-            return RedirectToAction("All");
-        }
-
-        public ActionResult All()
-        {
-            FillTempData();
-            try
-            {
-                var data = NHibertnateSession.GetAll<T>().ToList();
-                return View("All", data);
-            }
-            catch (Exception ex) 
-            {
-                TempData["ErrorMessage"] = Logger.LogError("An error occured during the 'get all' procedure. Error Message:", ex);
+                TempData["ErrorMessage"] += Logger.LogError("An error occured during the 'Get all' procedure. Error Message:", ex);
                 return View("All", new List<T>());
             }
         }
 
-        //[Authorize(Users = "krekkon, John", Roles = "Officers, Admins")]
+        [HttpPost]
+        public ActionResult Create(T item)
+        {
+            var validationResult = ModelStateValidation();
+            if (validationResult != null)
+                return validationResult;
+
+            try
+            {
+                NHibernateSession.AddItem(item);
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] += Logger.LogError("An error occured during the Create procedure. Error Message: ", ex);
+            }
+            return RedirectToAction("All");
+        }
+
         public virtual ActionResult Edit(int id)
         {
             try
             {
-                var result = NHibertnateSession.Get<T>(id);
+                var result = NHibernateSession.Get<T>(id);
 
-                if (result != null)
-                    return View("Edit", result);
+                if (result == null)
+                    TempData["ErrorMessage"] += Logger.LogWarning("Unavaliable data.");
                 else
-                    TempData["ErrorMessage"] = Logger.LogWarning("Unavaliable data.");
+                    return View("Edit", result);
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = Logger.LogError("An error occured during the Edit procedure. Error Message:", ex);
-                return View("All", new List<T>());
+                TempData["ErrorMessage"] += Logger.LogError("An error occured during the 'Edit' procedure. Error Message: ", ex);
             }
 
             return RedirectToAction("All");
@@ -80,22 +75,19 @@ namespace CarDealerProject.Controllers
 
 
         [HttpPost]
-        //[Authorize(Users = "krekkon, John", Roles = "Officers, Admins")]
         public ActionResult Edit(int id, T item)
         {
-            if (!ModelState.IsValid)
-            {
-                TempData["ErrorMessage"] = Logger.LogWarning("Invalid data.");
-                return RedirectToAction("All");
-            }
+            var validationResult = ModelStateValidation();
+            if (validationResult != null)
+                return validationResult;
 
             try
             {
-                NHibertnateSession.Update<T>(id, item);
+                NHibernateSession.Update<T>(id, item);
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = Logger.LogError("An error occured during the Edit procedure. Error Message:", ex);
+                TempData["ErrorMessage"] += Logger.LogError("An error occured during the Edit procedure. Error Message:", ex);
             }
             return RedirectToAction("All");
         }
@@ -104,54 +96,50 @@ namespace CarDealerProject.Controllers
         {
             try
             {
-                var result = NHibertnateSession.Get<T>(id);
+                var result = NHibernateSession.Get<T>(id);
 
-                if (result != null)
-                    return View("Details", result);
+                if (result == null)
+                    TempData["ErrorMessage"] += Logger.LogWarning("Unavaliable data.");
                 else
-                    TempData["ErrorMessage"] = Logger.LogWarning("Unavaliable data.");
+                    return View("Details", result);
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = Logger.LogError("An error occured during the 'Get details' procedure. Error Message:", ex);
-                return View("All", new List<T>());
+                TempData["ErrorMessage"] += Logger.LogError("An error occured during the 'Get details' procedure. Error Message:", ex);
             }
 
             return RedirectToAction("All");
         }
 
-        //[Authorize(Users = "krekkon, John", Roles = "Officers, Admins")]
         public ActionResult Delete(int id)
         {
             try
             {
-                var result = NHibertnateSession.Get<T>(id);
+                var result = NHibernateSession.Get<T>(id);
 
-                if (result != null)
-                    return View("Delete", result);
+                if (result == null)
+                    TempData["ErrorMessage"] += Logger.LogWarning("Unavaliable data.");
                 else
-                    TempData["ErrorMessage"] = Logger.LogWarning("Unavaliable data.");
+                    return View("Delete", result);
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = Logger.LogError("An error occured during the 'Get' procedure. Error Message:", ex);
-                return View("All", new List<T>());
+                TempData["ErrorMessage"] += Logger.LogError("An error occured during the 'Get' procedure. Error Message:", ex);
             }
 
             return RedirectToAction("All");
         }
 
         [HttpPost]
-        //[Authorize(Users = "krekkon, John", Roles = "Officers, Admins")]
         public ActionResult Delete(int id, T item)
         {
             try
             {
-                NHibertnateSession.Delete<T>(item);
+                NHibernateSession.Delete<T>(item);
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = Logger.LogError("An error occured during the Delete procedure. Error Message:", ex);
+                TempData["ErrorMessage"] += Logger.LogError("An error occured during the Delete procedure. Error Message:", ex);
             }
             return RedirectToAction("All");
         }
@@ -159,6 +147,20 @@ namespace CarDealerProject.Controllers
         protected virtual void FillTempData()
         {
             //Do Nothing Here. Fill the TempDada[] variable in the inherited classes if needed.
+        }
+
+        private ActionResult ModelStateValidation()
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] += Logger.LogWarning("Invalid data.");
+
+                foreach (var modelStateError in ModelState.Keys.SelectMany(key => ModelState[key].Errors))
+                    TempData["ErrorMessage"] += Logger.LogWarning(modelStateError.ErrorMessage);
+
+                return RedirectToAction("All");
+            }
+            return null;
         }
     }
 }

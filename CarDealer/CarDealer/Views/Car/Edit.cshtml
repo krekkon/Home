@@ -5,10 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.js")" type="text/javascript"></script>
-<link href="@Url.Content("~/Content/Themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
-
-
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -20,7 +16,22 @@
         $("#DDCarDealerName").val($("#EditForm").find("#CarDealerId").val());
 
         $("#ManufactureDate").datepicker({ dateFormat: 'yy-mm-dd', showAnim: "fadeIn", changeYear: true, yearRange: '-40:+0', maxDate: '+0d' });
-        $("#Year").datepicker({ dateFormat: 'yy', showAnim: "fadeIn", changeYear: true, maxDate: '+0d' });
+        $("#Year").datepicker({
+            dateFormat: 'yy',
+            showAnim: "fadeIn",
+            changeYear: true,
+            yearRange: '1886:c',
+            stepMonths: 12,
+            showButtonPanel: true,
+            onClose: function (dateText, inst) {
+                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(year, 1, 1));
+            }
+        });
+
+        $('#Year').focusin(function () {
+            $('.ui-datepicker-calendar').hide();
+        });
     });
     
     function setDealerProps() {
@@ -56,8 +67,8 @@
                 @Html.Hidden("CarDealerName")
                 
                 <div class="textSet">
-                    <span>@Html.LabelFor(model => model.CarDealerName)</span><br />
-                    <span>@Html.DropDownList("DDCarDealerName", TempData["CarDealersData"] as SelectList)</span><br />
+                    @Html.LabelFor(model => model.CarDealerName)<br />
+                    @Html.DropDownList("DDCarDealerName", TempData["CarDealersData"] as SelectList)<br />
                 </div>
                 
                 <div class="textSet">
@@ -99,10 +110,8 @@
                     @Html.EditorFor(model => model.CarNumber)
                     @Html.ValidationMessageFor(model => model.CarNumber)
                 </div>
-
-                
-
             </div>
+
             <div class="right carImage"></div>
             <div class="clear"></div>
 

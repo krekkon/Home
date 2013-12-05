@@ -1,9 +1,5 @@
 ﻿@model CarDealerProject.Models.Car
 
-<script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.js")" type="text/javascript"></script>
-<link href="@Url.Content("~/Content/Themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
-
-
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -15,7 +11,22 @@
         setDealerProps();
 
         $("#ManufactureDate").datepicker({ dateFormat: 'yy-mm-dd', showAnim: "fadeIn", changeYear: true, yearRange: '-40:+0', maxDate: '+0d' });
-        $("#Year").datepicker({ dateFormat: 'yy', showAnim: "fadeIn", changeYear: true, maxDate: '+0d' });
+        $("#Year").datepicker({
+            dateFormat: 'yy',
+            showAnim: "fadeIn",
+            changeYear: true,
+            yearRange: '1886:c',
+            stepMonths: 12,
+            showButtonPanel: true,
+            onClose: function(dateText, inst) {
+                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(year, 1, 1));
+            }
+        });
+        
+        $('#Year').focusin(function () {
+            $('.ui-datepicker-calendar').hide();
+        });
     });
 
     function setDefaultDateVaules() {
@@ -31,6 +42,7 @@
 </script>
 
 
+
 <div>
     <h2>Create new</h2>
     <br />
@@ -43,14 +55,14 @@
                 <br />
 
                 <div class="textSet">
-                    <span>@Html.LabelFor(model => model.Brand)</span><br />
-                    <span>@Html.EditorFor(model => model.Brand)</span><br />
+                    @Html.LabelFor(model => model.Brand)<br />
+                    @Html.EditorFor(model => model.Brand)<br />
                     <span class="errorMessage">@Html.ValidationMessageFor(model => model.Brand)</span>
                 </div>
 
                 <div class="textSet">
-                    <span>@Html.LabelFor(model => model.Model)</span><br />
-                    <span>@Html.EditorFor(model => model.Model)</span><br />
+                    @Html.LabelFor(model => model.Model)<br />
+                    @Html.EditorFor(model => model.Model)<br />
                     <span class="errorMessage">@Html.ValidationMessageFor(model => model.Model)</span>
                 </div>
 
@@ -59,49 +71,49 @@
 
 
                 <div class="textSet">
-                    <span>@Html.LabelFor(model => model.CarDealerName)</span><br />
-                    <span>@Html.DropDownList("DDCarDealerName", TempData["CarDealersData"] as SelectList)</span><br />
+                    @Html.LabelFor(model => model.CarDealerName)<br />
+                    @Html.DropDownList("DDCarDealerName", TempData["CarDealersData"] as SelectList)<br />
                 </div>
-                
+
                 <div class="textSet">
-                    <span>@Html.LabelFor(model => model.CarNumber)</span><br />
-                    <span>@Html.EditorFor(model => model.CarNumber)</span><br />
+                    @Html.LabelFor(model => model.CarNumber)<br />
+                    @Html.EditorFor(model => model.CarNumber)<br />
                     <span class="errorMessage">@Html.ValidationMessageFor(model => model.CarNumber)</span>
                 </div>
-                
+
                 <div class="textSet">
-                    <span>@Html.LabelFor(model => model.Color)</span><br />
-                    <span>@Html.EditorFor(model => model.Color)</span><br />
+                    @Html.LabelFor(model => model.Color)<br />
+                    @Html.EditorFor(model => model.Color)<br />
                     <span class="errorMessage">@Html.ValidationMessageFor(model => model.Color)</span>
                 </div>
-                
+
                 <div class="textSet">
-                    <span>@Html.LabelFor(model => model.ManufactureDate)</span><br />
-                    <span>@Html.EditorFor(model => model.ManufactureDate)</span><br />
+                    @Html.LabelFor(model => model.ManufactureDate)<br />
+                    @Html.EditorFor(model => model.ManufactureDate)<br />
                     <span class="errorMessage">@Html.ValidationMessageFor(model => model.ManufactureDate)</span>
                 </div>
-                
+
                 <div class="textSet">
-                    <span>@Html.LabelFor(model => model.Year)</span><br />
-                    <span>@Html.EditorFor(model => model.Year)</span><br />
+                    @Html.LabelFor(model => model.Year)<br />
+                    @Html.EditorFor(model => model.Year)<br />
                     <span class="errorMessage">@Html.ValidationMessageFor(model => model.Year)</span>
                 </div>
-                
+
                 <div class="textSet">
-                    <span>@Html.LabelFor(model => model.Owners)</span><br />
-                    <span>@Html.EditorFor(model => model.Owners)</span><br />
+                    @Html.LabelFor(model => model.Owners)<br />
+                    @Html.EditorFor(model => model.Owners)<br />
                     <span class="errorMessage">@Html.ValidationMessageFor(model => model.Owners)</span>
                 </div>
-                
+
                 <div class="textSet">
-                    <span>@Html.LabelFor(model => model.State)</span><br />
-                    <span>@Html.EditorFor(model => model.State)</span><br />
+                    @Html.LabelFor(model => model.State)<br />
+                    @Html.EditorFor(model => model.State)<br />
                     <span class="errorMessage">@Html.ValidationMessageFor(model => model.State)</span>
                 </div>
-                
+
                 <div class="textSet">
-                    <span>@Html.LabelFor(model => model.Description)</span><br />
-                    <span>@Html.EditorFor(model => model.Description)</span><br />
+                    @Html.LabelFor(model => model.Description)<br />
+                    @Html.EditorFor(model => model.Description)<br />
                     <span class="errorMessage">@Html.ValidationMessageFor(model => model.Description)</span>
                 </div>
 
