@@ -73,6 +73,8 @@
                 <div class="textSet">
                     @Html.LabelFor(model => model.CarDealerName)<br />
                     @Html.DropDownList("DDCarDealerName", TempData["CarDealersData"] as SelectList)<br />
+                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.CarDealerId)</span>
+                    <span class="errorMessage">@Html.ValidationMessageFor(model => model.CarDealerName)</span>
                 </div>
 
                 <div class="textSet">

@@ -42,8 +42,12 @@ a:hover {
 }
 
 .wrap {
-    width: 1080px;
+    width: 1090px;
     margin: 0 auto;
+}
+
+.actual-menu {
+    text-decoration: underline;
 }
 
 .header {
@@ -164,7 +168,7 @@ a:hover {
 
 .rightmenu {
     float: right;
-    width: 150px;
+    width: 160px;
     padding: 0 20px 20px 20px;
 }
 
