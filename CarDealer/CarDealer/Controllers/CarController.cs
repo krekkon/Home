@@ -44,6 +44,12 @@ namespace CarDealerProject.Controllers
             }
         }
 
+        public override ActionResult Edit(int id)
+        {
+            FillTempData();
+            return base.Edit(id);
+        } 
+
         protected override void FillTempData()
         {
             var tempDataHelper = new TempDataHelper();

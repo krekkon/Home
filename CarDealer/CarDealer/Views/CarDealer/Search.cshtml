@@ -7,29 +7,31 @@
     @Html.AntiForgeryToken()
     <fieldset>
         <legend></legend>
-        
+
         <div class="textSet">
             @Html.Label("Name")<br />
             <input type="text" name="Name" />
         </div>
-        
+
         <div class="textSet">
             @Html.Label("Country")<br />
             @Html.DropDownList("Country", TempData["Countries"] as IEnumerable<SelectListItem>)
         </div>
-        
+
         <div class="textSet">
             @Html.Label("City")<br />
             @Html.DropDownList("City", TempData["Cities"] as IEnumerable<SelectListItem>)
         </div>
-        
+
         <div class="textSet">
             @Html.Label("Street")<br />
             <input type="text" name="Street" />
         </div>
-        
+
         <p class="textSet">
             <input type="button" value="Search" onclick="submitFormGetPartView('SearchForm', 'dataContainer');" />
+            <input class="right" type="button" value="Reset" onclick="document.location.reload(true)" />
+            <span class="clear" />
         </p>
     </fieldset>
 }

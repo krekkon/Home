@@ -58,7 +58,7 @@ namespace CarDealerProject.Controllers
         }
 
         //[Authorize(Users = "krekkon, John", Roles = "Officers, Admins")]
-        public ActionResult Edit(int id)
+        public virtual ActionResult Edit(int id)
         {
             try
             {

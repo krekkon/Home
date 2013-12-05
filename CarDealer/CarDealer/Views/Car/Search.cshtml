@@ -41,12 +41,14 @@
         </div>
 
         <div class="textSet">
-            @Html.Label("Car dealer Name")<br/>
+            @Html.Label("Dealership name")<br/>
             @Html.DropDownList("CarDealerId", TempData["CarDealersData"] as IEnumerable<SelectListItem>)
         </div>
         
         <p class="textSet">
             <input type="button" value="Search" onclick="submitFormGetPartView('SearchForm', 'dataContainer');" />
+            <input class="right" type="button" value="Reset" onclick="document.location.reload(true)" />
+            <span class="clear" />
         </p>
     </fieldset>
 }

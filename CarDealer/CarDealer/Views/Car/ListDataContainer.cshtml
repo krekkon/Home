@@ -1,62 +1,70 @@
 ﻿@model IEnumerable<CarDealerProject.Models.Car>
 
 <h2>Cars</h2>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Brand)
-        </th>
-        <th >
-            @Html.DisplayNameFor(model => model.Model)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Year)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CarNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CarDealerName)
-        </th>
-        <th></th>
-    </tr>
+@if (!@Model.Any())
+{
+    <h2 class="center"> There is no data to display </h2>
+}
+else
+{
 
-    @foreach (var item in Model)
-    {
+    <table>
         <tr>
-            <td class="crop" style="width: 70px;">
-                @Html.DisplayFor(modelItem => item.Brand)
-            </td>
-            <td class="crop" style="width: 60px;">
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td class="crop" style="width: 50px;">
-                @Html.DisplayFor(modelItem => item.Year)
-            </td>
-            <td class="crop" style="width: 60px;">
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td class="crop" style="width: 60px;">
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td class="crop" style="width: 80px;">
-                @Html.DisplayFor(modelItem => item.CarNumber)
-            </td>
-            <td class="crop" style="width: 130px;">
-                @Html.ActionLink(item.CarDealerName, "Details", "CarDealer", new { id = item.CarDealerId }, new object())
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th >
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarDealerName)
+            </th>
+            <th></th>
         </tr>
-    }
-
-</table>
+    
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="crop" style="width: 70px;">
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td class="crop" style="width: 60px;">
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td class="crop" style="width: 50px;">
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td class="crop" style="width: 60px;">
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td class="crop" style="width: 60px;">
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td class="crop" style="width: 90px;">
+                    @Html.DisplayFor(modelItem => item.CarNumber)
+                </td>
+                <td class="crop" style="width: 120px;">
+                    @Html.ActionLink(item.CarDealerName, "Details", "CarDealer", new {id = item.CarDealerId}, new object())
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+                    @Html.ActionLink("Details", "Details", new {id = item.Id}) |
+                    @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+                </td>
+            </tr>
+        }
+    
+    </table>
+}

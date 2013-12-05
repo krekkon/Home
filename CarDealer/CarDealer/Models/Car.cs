@@ -23,6 +23,8 @@ namespace CarDealerProject.Models
         public virtual int Year { get; set; }
 
         [BirthDate]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Manufacture date")]
         public virtual DateTime ManufactureDate { get; set; }
 
         [Required]
@@ -38,16 +40,20 @@ namespace CarDealerProject.Models
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Reg. number")]
         public virtual string CarNumber { get; set; }
 
         [Required]
         public virtual int Owners { get; set; }
 
         [Required]
+        [Display(Name = "Dealership Id")]
+        [Range(0, int.MaxValue)]
         public virtual int CarDealerId { get; set; }
 
         [Required]
         [StringLength(200)]
+        [Display(Name = "Dealership name")]
         public virtual string CarDealerName { get; set; }
     }
 }

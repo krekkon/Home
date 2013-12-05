@@ -2,15 +2,17 @@
 @model IEnumerable<CarDealer>
 
 @{
-    ViewBag.Title = "Car dealers";
+    ViewBag.Title = "Car dealerships";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <script type="text/javascript">
-    @if (TempData["ErrorMessage"] != null)
-    {
-        @Html.Raw("showMessageBox('" + @TempData["ErrorMessage"] + "');") 
-    }
+    $(document).ready(function () {
+        @if (TempData["ErrorMessage"] != null)
+        {
+            @Html.Raw("showMessageBox('Warning','" + @TempData["ErrorMessage"] + "');") 
+        }
+    });
 </script>
 
 <div class="leftmenu">

@@ -27,7 +27,7 @@
             <br />
         </div>
 
-        <div class="right carDealerImage"></div>
+        <div class="right carImage"></div>
         <div class="clear"></div>
 
         <span class="label-title">@Html.DisplayNameFor(model => model.Description)</span><br />
@@ -41,9 +41,9 @@
         <span class="label-title">@Html.DisplayNameFor(model => model.CarNumber)</span><br />
         <span class="label-text">@Html.DisplayFor(model => model.CarNumber)</span><br />
         <br />
-
-        <span class="label-title">@Html.DisplayNameFor(model => model.CarDealerId)</span><br />
-        <span class="label-text">@Html.DisplayFor(model => model.CarDealerId)</span><br />
+        
+        <span class="label-title">@Html.DisplayNameFor(model => model.CarDealerName)</span><br />
+        <span class="label-title">@Html.ActionLink(@Model.CarDealerName, "Details", "CarDealer", new { id = @Model.CarDealerId }, new object())</span><br />
         <br />
 
     </fieldset>

@@ -11,110 +11,110 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+
         $("#DDCarDealerName").on("change", function () {
-            $("#CarDealerId").val($(this).find('option:selected').val());
-            $("#CarDealerName").val($(this).find('option:selected').text());
+            setDealerProps();
         });
+
+        //get the value from model
+        $("#DDCarDealerName").val($("#EditForm").find("#CarDealerId").val());
 
         $("#ManufactureDate").datepicker({ dateFormat: 'yy-mm-dd', showAnim: "fadeIn", changeYear: true, yearRange: '-40:+0', maxDate: '+0d' });
         $("#Year").datepicker({ dateFormat: 'yy', showAnim: "fadeIn", changeYear: true, maxDate: '+0d' });
     });
+    
+    function setDealerProps() {
+        $("#EditForm").find("#CarDealerId").val($("#DDCarDealerName").find('option:selected').val());
+        $("#EditForm").find("#CarDealerName").val($("#DDCarDealerName").find('option:selected').text());
+    }
 </script>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Car", FormMethod.Post, new { id = "EditForm" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     
     <div class="content center no-float">
         <fieldset>
-            <legend>Car</legend>
+            <legend>Edit car</legend>
 
             <div class="left">
-                <div>
+                <div class="textSet">
                     @Html.LabelFor(model => model.Brand)
                     <br />
                     @Html.EditorFor(model => model.Brand)
                     @Html.ValidationMessageFor(model => model.Brand)
                 </div>
 
-                <div>
+                <div class="textSet">
                     @Html.LabelFor(model => model.Model)
                     <br />
                     @Html.EditorFor(model => model.Model)
                     @Html.ValidationMessageFor(model => model.Model)
                 </div>
+                
+                @Html.Hidden("CarDealerName")
+                
+                <div class="textSet">
+                    <span>@Html.LabelFor(model => model.CarDealerName)</span><br />
+                    <span>@Html.DropDownList("DDCarDealerName", TempData["CarDealersData"] as SelectList)</span><br />
+                </div>
+                
+                <div class="textSet">
+                    @Html.LabelFor(model => model.CarDealerId)<br />
+                    @Html.TextBoxFor(model => model.CarDealerId, new Dictionary<string, object>(){{"readonly", "true"}})<br />
+                </div>
 
-                <div>
+                <div class="textSet">
                     @Html.LabelFor(model => model.Year)
                     <br />
                     @Html.EditorFor(model => model.Year)
                     @Html.ValidationMessageFor(model => model.Year)
                 </div>
 
-                <div>
+                <div class="textSet">
                     @Html.LabelFor(model => model.ManufactureDate)
                     <br />
                     @Html.EditorFor(model => model.ManufactureDate)
                     @Html.ValidationMessageFor(model => model.ManufactureDate)
                 </div>
 
-                <div>
+                <div class="textSet">
                     @Html.LabelFor(model => model.State)
                     <br />
                     @Html.EditorFor(model => model.State)
                     @Html.ValidationMessageFor(model => model.State)
                 </div>
 
-                <div>
+                <div class="textSet">
                     @Html.LabelFor(model => model.Color)
                     <br />
                     @Html.EditorFor(model => model.Color)
                     @Html.ValidationMessageFor(model => model.Color)
                 </div>
 
-                <div>
+                <div class="textSet">
                     @Html.LabelFor(model => model.CarNumber)
                     <br />
                     @Html.EditorFor(model => model.CarNumber)
                     @Html.ValidationMessageFor(model => model.CarNumber)
                 </div>
 
-
-
-
-                <div>
-                    @Html.LabelFor(model => model.CarDealerId)
-                    <br />
-                    @Html.EditorFor(model => model.CarDealerId)
-                    @Html.ValidationMessageFor(model => model.CarDealerId)
-                </div>
-
-                <div>
-                    @Html.LabelFor(model => model.CarDealerName)
-                    <br />
-                    @Html.EditorFor(model => model.CarDealerName)
-                    @Html.ValidationMessageFor(model => model.CarDealerName)
-                </div>
+                
 
             </div>
             <div class="right carImage"></div>
             <div class="clear"></div>
 
-            <div>
+            <div class="textSet">
                 @Html.LabelFor(model => model.Description)
                 <br />
                 @Html.TextAreaFor(model => model.Description, 10, 104, new Dictionary<string, string>())
                 @Html.ValidationMessageFor(model => model.Description)
             </div>
 
-            <br />
-            <input type="submit" value="Save" />
+            <input class="textSet" type="submit" value="Save" />
+            <a href="..\All"><input type="button" value="Cancel"/></a>
         </fieldset>
     </div>
 }
-
-<div class="center">
-    <br />
-    @Html.ActionLink("Back to List", "All")
-</div>

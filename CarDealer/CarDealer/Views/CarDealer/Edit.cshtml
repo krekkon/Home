@@ -1,7 +1,7 @@
 ﻿@model CarDealerProject.Models.CarDealer
 
 @{
-    ViewBag.Title = "Edit car dealer";
+    ViewBag.Title = "Edit car dealership";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,7 +13,7 @@
     <div class="content center no-float">
 
         <fieldset>
-            <legend>Car dealer</legend>
+            <legend>Edit car dealership</legend>
             <div class="left">
                 <div class="textSet">
                     <span>@Html.LabelFor(model => model.Name)</span><br />
@@ -73,12 +73,8 @@
             <div class="right carDealerImage"></div>
             <div class="clear"></div>
 
-            <input type="submit" value="Save" />
+            <input class="textSet" type="submit" value="Save" />
+            <a href="..\All"><input type="button" value="Cancel"/></a>
         </fieldset>
     </div>
 }
-
-<div class="center">
-    <br />
-    @Html.ActionLink("Back to List", "All")
-</div>

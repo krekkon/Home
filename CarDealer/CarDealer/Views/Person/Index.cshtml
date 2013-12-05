@@ -6,10 +6,12 @@
 
 
 <script type="text/javascript">
-    @if (TempData["ErrorMessage"] != null)
-    {
-            @Html.Raw("showMessageBox('" + @TempData["ErrorMessage"] + "');") 
-    }
+    $(document).ready(function () {
+        @if (TempData["ErrorMessage"] != null)
+        {
+            @Html.Raw("showMessageBox('Warning','" + @TempData["ErrorMessage"] + "');") 
+        }
+    });
 </script>
 
 <div>

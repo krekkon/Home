@@ -17,16 +17,14 @@ namespace CarDealerProject.Models
         [Range(0, int.MaxValue)]
         public virtual int ParkingPlaces { get; set; }
 
-        //Validate?
+        //Validate? hun or foreign...
         [StringLength(50)]
         public virtual string Telephone { get; set; }
 
-        //Validate?
         [StringLength(200)]
         [EmailAddress]
         public virtual string Email { get; set; }
 
-        //Validate
         [StringLength(200)]
         public virtual string Country { get; set; }
 
@@ -34,12 +32,14 @@ namespace CarDealerProject.Models
         public virtual string City { get; set; }
 
         [StringLength(10)]
+        [Display(Name = "Zip code")]
         public virtual string ZipCode { get; set; }
 
         [StringLength(200)]
         public virtual string Street { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Street number")]
         public virtual string StreetNumber { get; set; }
     }
 }
