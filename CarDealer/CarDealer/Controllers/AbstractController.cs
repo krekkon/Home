@@ -7,6 +7,7 @@ using CarDealerProject.Models.Nhibernate;
 
 namespace CarDealerProject.Controllers
 {
+    [Authorize]
     public abstract class AbstractController<T> : Controller where T : class
     {
         protected readonly INHibernateSession NHibernateSession;
@@ -21,11 +22,27 @@ namespace CarDealerProject.Controllers
             return RedirectToAction("All");
         }
 
+        protected override ViewResult View(IView view, object model)
+        {
+            if (view.GetType().Name == "All")
+                FillTempData();
+
+            return base.View(view, model);
+        }
+
+        protected override ViewResult View(string viewName, string masterName, object model)
+        {
+            if (viewName == "All")
+                FillTempData();
+
+            return base.View(viewName, masterName, model);
+        }
+
+        [HttpGet]
         public ActionResult All()
         {
             try
             {
-                FillTempData();
                 var data = NHibernateSession.GetAll<T>().ToList();
                 return View("All", data);
             }
@@ -37,6 +54,8 @@ namespace CarDealerProject.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Sale")]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(T item)
         {
             var validationResult = ModelStateValidation();
@@ -54,6 +73,7 @@ namespace CarDealerProject.Controllers
             return RedirectToAction("All");
         }
 
+        [Authorize(Roles = "Admin, Sale")]
         public virtual ActionResult Edit(int id)
         {
             try
@@ -73,8 +93,9 @@ namespace CarDealerProject.Controllers
             return RedirectToAction("All");
         }
 
-
         [HttpPost]
+        [Authorize(Roles = "Admin, Sale")]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, T item)
         {
             var validationResult = ModelStateValidation();
@@ -111,6 +132,7 @@ namespace CarDealerProject.Controllers
             return RedirectToAction("All");
         }
 
+        [Authorize(Roles = "Admin, Sale")]
         public ActionResult Delete(int id)
         {
             try
@@ -131,6 +153,7 @@ namespace CarDealerProject.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Sale")]
         public ActionResult Delete(int id, T item)
         {
             try
@@ -141,6 +164,37 @@ namespace CarDealerProject.Controllers
             {
                 TempData["ErrorMessage"] += Logger.LogError("An error occured during the Delete procedure. Error Message:", ex);
             }
+            return RedirectToAction("All");
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin, Sale")]
+        //[ValidateAntiForgeryToken] //Todo add aax antiforgey token
+        public ActionResult DeleteAllByIds(string idsForDelete)
+        {
+            if (string.IsNullOrWhiteSpace(idsForDelete))
+            {
+                TempData["ErrorMessage"] += Logger.LogWarning("Please select at least one row to delete");
+                return RedirectToAction("All");
+            }
+
+            try
+            {
+                var deletedRows = NHibernateSession.DeleteAllByIds<T>(idsForDelete.Split(','));
+                if (deletedRows > 0)
+                {
+                    var message = (deletedRows > 1) ? "The selected rows (" + deletedRows + ") have been deleted."
+                                                    : "The selected row has been deleted.";
+
+                    TempData["Message"] += message;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] += Logger.LogError("An error occured during the 'Delete selected' procedure. Please refresh the page. Error Message: ", ex);
+            }
+
             return RedirectToAction("All");
         }
 

@@ -118,20 +118,31 @@
     <Reference Include="Unity.Mvc4">
       <HintPath>..\packages\Unity.Mvc4.1.2.0.0\lib\net40\Unity.Mvc4.dll</HintPath>
     </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AbstractController.cs" />
     <Compile Include="Controllers\CarDealerController.cs" />
     <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Attributes\CarYearAttribute.cs" />
+    <Compile Include="Models\Business\Exceptions\FakeImplementationException.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\CarDealer.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Security\NHRoleProvider.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Support\CreateFakeData.cs" />
     <Compile Include="Models\Helpers\TempDataHelper.cs" />
     <Compile Include="Models\Logger\Logger.cs" />
@@ -147,6 +158,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App_Data\CarDealerDB.ldf">
+      <DependentUpon>CarDealerDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\CarDealerDB.mdf" />
     <Content Include="Content\Images\bg.gif" />
     <Content Include="Content\Images\Footer.png" />
     <Content Include="Content\Images\Kari1.png" />
@@ -211,9 +226,17 @@
     <Content Include="Content\Themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\Themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Nhibernate\CarDealer.hbm.xml" />
-    <Content Include="Models\Nhibernate\Car.hbm.xml" />
-    <Content Include="Models\Nhibernate\hibernate.cfg.xml" />
+    <EmbeddedResource Include="Models\Nhibernate\CarDealer.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Nhibernate\Car.hbm.xml" />
+    <EmbeddedResource Include="Models\Nhibernate\Role.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Nhibernate\User.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Nhibernate\hibernate.cfg.xml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -232,7 +255,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Unity.Mvc4.README.txt" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -240,10 +265,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\Login.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

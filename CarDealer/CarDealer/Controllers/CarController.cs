@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using CarDealerProject.Models;
+using CarDealerProject.Models.Business.Exceptions;
 using CarDealerProject.Models.Helpers;
 using CarDealerProject.Models.Logger;
 using CarDealerProject.Models.Nhibernate;
@@ -49,23 +50,24 @@ namespace CarDealerProject.Controllers
 
                 return Request.IsAjaxRequest()
                            ? (ActionResult)PartialView("ListDataContainer", result)
-                           : View("All", result);
+                           : RedirectToAction("All", new { listToView = result });
             }
-            catch (NotImplementedException)
+            catch (FakeImplementationException)
             {
                 var result = CreateFakeData.GetCars(10);
-                
+
                 return Request.IsAjaxRequest()
-                       ? (ActionResult)PartialView("ListDataContainer", result)
-                       : View("All", result);
+                           ? (ActionResult) PartialView("ListDataContainer", result)
+                           : RedirectToAction("All", new {listToView = result});
             }
             catch (Exception ex)
             {
                 TempData["ErrorMessage"] += Logger.LogError("An error occured during the 'Search' procedure. Error Message:", ex);
-                return View("All", new List<Car>());
+                return RedirectToAction("All", new {listToView = new List<Car>()});
             }
         }
 
+        [Authorize(Roles = "Admin, Sale")]
         public override ActionResult Edit(int id)
         {
             FillTempData();
@@ -87,17 +89,6 @@ namespace CarDealerProject.Controllers
             }
             catch (Exception ex)
             {
-                //Fill empty values for avoid view errors
-                var emptyEnumerableA = new[] { new { Id = "", Name = "" } }.ToList();
-                TempData["CarDealersData"] = new SelectList(emptyEnumerableA, "Id", "Name");
-
-                var emptyEnumerableB = new[] { new { Brand = "", Model = "", State = "", Color = "" } }.ToList();
-                TempData["Brands"] = new SelectList(emptyEnumerableB.Select(item => item.Brand).Distinct());
-                TempData["Models"] = new SelectList(emptyEnumerableB.Select(item => item.Model).Distinct());
-                TempData["States"] = new SelectList(emptyEnumerableB.Select(item => item.State).Distinct());
-                TempData["Colors"] = new SelectList(emptyEnumerableB.Select(item => item.Color).Distinct());
-
-
                 TempData["ErrorMessage"] += Logger.LogError("An error occured during the 'FillTempData' procedure. Please refresh the page. Error Message:", ex);
             }
 

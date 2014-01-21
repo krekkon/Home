@@ -5,6 +5,7 @@
 @using (Html.BeginForm("Create", "CarDealer", FormMethod.Post, new { id = "CreateForm" }))
 { 
     @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken() 
     <fieldset>
         <legend></legend>
         <div class="textSet">

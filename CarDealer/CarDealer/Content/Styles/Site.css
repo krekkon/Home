@@ -223,8 +223,6 @@ a:hover {
     width: 80%;
 }
 
-
-
 .errorMessage {
     color: red;
     font-size: 12px;
@@ -254,3 +252,8 @@ a:hover {
     text-overflow: ellipsis;
     width: 100px;
 }
+
+/*marker classes:*/
+.deleteCHB {}
+/*marker classes END:*/
+

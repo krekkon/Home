@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CarDealerProject.Models.Business.Exceptions;
 using CarDealerProject.Models.Nhibernate;
 using NHibernate;
 
@@ -9,7 +10,7 @@ namespace CarDealerProject.Support
     {
         public ISession OpenSession(string modelTypeName)
         {
-            throw new NotImplementedException();
+            throw new FakeImplementationException();
         }
 
         public IEnumerable<T> GetAll<T>()
@@ -47,7 +48,13 @@ namespace CarDealerProject.Support
 
         public void AddItem<T>(T carDealer)
         {
+            //TOD NOTIMPLEMENTED EXPECITON?
             //of course I add it, or course. just a minute
+        }
+
+        public int DeleteAllByIds<T>(string[] entityIds)
+        {
+            return entityIds.Length;
         }
     }
 }

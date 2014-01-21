@@ -55,7 +55,7 @@ namespace CarDealerProject.Models.Nhibernate
                 var itemtoUpdate = session.Get<T>(id);
 
                 foreach (var prop in (typeof(T)).GetProperties())
-                    prop.SetValue(itemtoUpdate,prop.GetValue(modifiedItem));
+                    prop.SetValue(itemtoUpdate, prop.GetValue(modifiedItem));
 
                 using (var transaction = session.BeginTransaction())
                 {
@@ -74,6 +74,27 @@ namespace CarDealerProject.Models.Nhibernate
                     session.Delete(item);
                     transaction.Commit();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Delete all row from the table (TableName: T.GetType().Name) 
+        /// where the Id column is equals on of the parameter's element
+        /// </summary>
+        /// <typeparam name="T">Must be a table in DB with that tableName what table contains Id column</typeparam>
+        /// <param name="entityIds">Llist of the Ids what rows have to be delete from the table</param>
+        /// <returns>Deleted rows</returns>
+        public int DeleteAllByIds<T>(string[] entityIds)
+        {
+            var className = Activator.CreateInstance<T>().GetType().Name;
+
+            using (var session = OpenSession(className))
+            {
+                string hql = "DELETE FROM " + className + " WHERE Id IN (:idsList)";
+                var deletedEntities = session.CreateQuery(hql)
+                                             .SetParameterList("idsList", entityIds.ToArray())
+                                             .ExecuteUpdate();
+                return deletedEntities;
             }
         }
 

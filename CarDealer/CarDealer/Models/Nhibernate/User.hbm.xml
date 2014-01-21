@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="CarDealerProject" namespace="CarDealerProject.Models">
+  <class name="User" table="[User]" dynamic-update="true" lazy="true">
+    <cache usage="read-write"/>
+    <id name="Id" column="Id" type="int">
+      <generator class="native" />
+    </id>
+    
+    <property name="UserName" />
+    <property name="DisplayName" />
+    <property name="Password" />
+    <property name="PasswordSalt" />
+ 
+    <!--<many-to-one name="Role" class="CarDealerProject.Models.Role" column="UserId">
+      <column name="Id"/>
+      <column name="UserId"/>
+      <column name="RoleName"/>
+    </many-to-one >-->
+  
+  </class>
+</hibernate-mapping>

@@ -6,16 +6,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        @if (TempData["ErrorMessage"] != null)
-        {
-            var formattedMessage = MvcHtmlString.Create(Html.Encode(TempData["ErrorMessage"]));
-            @Html.Raw("showMessageBox('Warning','" + formattedMessage + "');")
-        }
-    });
-</script>
-
 <div class="leftmenu">
     @{Html.RenderPartial("Search", new CarDealer());}
 </div>
@@ -24,8 +14,12 @@
     @{Html.RenderPartial("ListDataContainer", @Model);}
 </div>
 
-<div class="rightmenu">
-    @{Html.RenderPartial("Create", new CarDealer());}
-</div>
+@if (User.IsInRole("Admin"))
+{
+    <div class="rightmenu">
+        @{Html.RenderPartial("Create", new CarDealer());}
+    </div>
+}
+
 
 <div class="clear"></div>

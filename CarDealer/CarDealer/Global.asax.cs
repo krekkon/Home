@@ -5,6 +5,7 @@ using CarDealerProject.App_Start;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using Unity.Mvc4;
+using WebMatrix.WebData;
 
 namespace CarDealerProject
 {
@@ -22,6 +23,9 @@ namespace CarDealerProject
 
             var container = new UnityContainer().LoadConfiguration();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+
+            if (!WebSecurity.Initialized)
+                WebSecurity.InitializeDatabaseConnection("dbContext", "webpages_User", "Id", "UserName", true);
         }
     }
 }

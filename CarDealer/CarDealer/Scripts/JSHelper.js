@@ -32,3 +32,28 @@ function submitFormGetPartView(fromId, containerId) {
         }
     });
 }
+
+//function postDeleteAllSelected(controller, action) {
+
+//    var ids = [];
+
+//    $('.deleteCHB input:checked').each(function () {
+//        ids.push(this.id.split("_")[1]);
+//    });
+
+//    if (ids.length == 0)
+//        return;
+
+//    $.ajax({
+//        url: controller + '/' + action,
+//        type: 'POST',
+//        cache: false,
+//        contentType: 'application/json; charset=utf-8',
+//        data: JSON.stringify({ entityIds: ids, rd: new Date().getTime() }),
+//        success: function (data) {
+//            document.open();
+//            document.write(data);
+//            document.close();
+//        }
+//    });
+//}

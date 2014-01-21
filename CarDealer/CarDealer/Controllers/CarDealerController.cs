@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using CarDealerProject.Models;
+using CarDealerProject.Models.Business.Exceptions;
 using CarDealerProject.Models.Helpers;
 using CarDealerProject.Models.Logger;
 using CarDealerProject.Models.Nhibernate;
@@ -16,20 +17,12 @@ namespace CarDealerProject.Controllers
         //
         // GET: /CarDealer/
 
-        #region Comment
-        //TODO LATER, post is arrived with the ids of cheked boxes
-        //public ActionResult DeleteAll(string[] ids)
-        //{
-        //    NHibernateSession.Delete();
-        //    return RedirectToAction("All");
-        //} 
-        #endregion
-
-        public CarDealerController(INHibernateSession nHibernateSession) 
+        public CarDealerController(INHibernateSession nHibernateSession)
             : base(nHibernateSession)
         {
         }
 
+        //TODO Refact
         public ActionResult GetAllSimilar(CarDealer sampleItem)
         {
             sampleItem.Country = sampleItem.Country ?? "";
@@ -53,27 +46,23 @@ namespace CarDealerProject.Controllers
                         .List<CarDealer>().ToList();
                 }
 
-                if (Request.IsAjaxRequest())
-                {
-                    return PartialView("ListDataContainer", result);
-                }
-                else
-                {
-                    return View("All", result);
-                }
+                return Request.IsAjaxRequest()
+                          ? (ActionResult)PartialView("ListDataContainer", result)
+                          : RedirectToAction("All", new { listToView = result });
             }
-            catch (NotImplementedException)
+            catch (FakeImplementationException)
             {
                 var result = CreateFakeData.GetCarDealers(10);
 
                 return Request.IsAjaxRequest()
-                       ? (ActionResult)PartialView("ListDataContainer", result)
-                       : View("All", result);
+                          ? (ActionResult)PartialView("ListDataContainer", result)
+                          : RedirectToAction("All", new { listToView = result });
             }
             catch (Exception ex)
             {
                 TempData["ErrorMessage"] += Logger.LogError("An error occured during the 'Search' procedure. Error Message: ", ex);
-                return View("All", new List<CarDealer>());
+                return RedirectToAction("All", new { listToView = new List<CarDealer>() });
+
             }
         }
 
@@ -89,11 +78,6 @@ namespace CarDealerProject.Controllers
             }
             catch (Exception ex)
             {
-                //Fill empty values for avoid view errors
-                var emptyEnumbeable = new[] { new { Country = "", City = "" } }.ToList();
-                TempData["Countries"] = new SelectList(emptyEnumbeable.Select(item => item.City).Distinct());
-                TempData["Cities"] = new SelectList(emptyEnumbeable.Select(item => item.Country).Distinct());
-
                 TempData["ErrorMessage"] += Logger.LogError("An error occured during the 'FillTempData' procedure. Please refresh the page. Error Message:", ex);
             }
 

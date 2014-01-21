@@ -11,5 +11,6 @@ namespace CarDealerProject.Models.Nhibernate
         void Update<T>(int id, T carDealer);
         T Get<T>(int id);
         void AddItem<T>(T carDealer);
+        int DeleteAllByIds<T>(string[] entityIds);
     }
 }

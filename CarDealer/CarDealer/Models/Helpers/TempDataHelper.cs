@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using CarDealerProject.Models.Business.Exceptions;
 using CarDealerProject.Models.Nhibernate;
 
 namespace CarDealerProject.Models.Helpers
@@ -80,7 +81,7 @@ namespace CarDealerProject.Models.Helpers
                     Colors = new SelectList(enumerable.Select(item => item.Color).Distinct());
                 }
             }
-            catch (NotImplementedException)
+            catch (FakeImplementationException)
             {
                 var mockEmumerable = new[]
                 { 
@@ -118,7 +119,7 @@ namespace CarDealerProject.Models.Helpers
                     return new SelectList(result.ToList(), "Id", "Name");
                 }
             }
-            catch (NotImplementedException)
+            catch (FakeImplementationException)
             {
                 var mockEmumerable = new[]
                 { 
@@ -157,7 +158,7 @@ namespace CarDealerProject.Models.Helpers
                     Cities = new SelectList(enumerable.Select(item => item.City).Distinct());
                 }
             }
-            catch (NotImplementedException)
+            catch (FakeImplementationException)
             {
                 var mockEmumerable = new[]
                 { 

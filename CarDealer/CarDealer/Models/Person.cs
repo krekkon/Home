@@ -12,7 +12,6 @@ namespace CarDealerProject.Models
 
         [Required]
         [StringLength(50)]
-        //TODO REGEX FOR HUN? no
         public virtual string IDCardNumber { get; set; }
 
         [Required]

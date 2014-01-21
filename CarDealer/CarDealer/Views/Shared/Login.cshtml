@@ -1,0 +1,45 @@
+﻿@model CarDealerProject.Models.User
+
+@if (!User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm("Login", "User", FormMethod.Post))
+    {
+    @Html.AntiForgeryToken() 
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.UserName)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Password)
+            </td>
+            <td>
+                @Html.PasswordFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Login" />
+            </td>
+            <td>
+                <span>@Html.CheckBoxFor(model => model.PersistCookie) Remember me</span>
+            </td>
+        </tr>
+    </table>
+    <br />
+    @Html.ValidationSummary()
+    }
+}
+else
+{
+    <span>@Html.ActionLink("Log out", "LogOut", "User") </span>
+    <span>@User.Identity.Name</span>
+}
+
+
+

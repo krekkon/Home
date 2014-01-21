@@ -17,22 +17,22 @@
 
         <div class="textSet">
             @Html.Label("Brand")<br/>
-            @Html.DropDownList("Brand", TempData["Brands"] as IEnumerable<SelectListItem>)
+            @Html.DropDownList("Brand", (TempData["Brands"] ?? new List<SelectListItem>() ) as IEnumerable<SelectListItem>)
         </div>
 
         <div class="textSet">
             @Html.Label("Model") <br/>
-            @Html.DropDownList("Model", TempData["Models"] as IEnumerable<SelectListItem>)
+            @Html.DropDownList("Model", (TempData["Models"] ?? new List<SelectListItem>() ) as IEnumerable<SelectListItem>)
         </div>
 
         <div class="textSet">
             @Html.Label("Color")<br/>
-            @Html.DropDownList("Color", TempData["Colors"] as IEnumerable<SelectListItem>)
+            @Html.DropDownList("Color", (TempData["Colors"] ?? new List<SelectListItem>() ) as IEnumerable<SelectListItem>)
         </div>
 
         <div class="textSet">
             @Html.Label("State")<br/>
-            @Html.DropDownList("State", TempData["States"] as IEnumerable<SelectListItem>)
+            @Html.DropDownList("State", (TempData["States"] ?? new List<SelectListItem>() ) as IEnumerable<SelectListItem>)
         </div>
         
         <div class="textSet">
@@ -42,7 +42,7 @@
 
         <div class="textSet">
             @Html.Label("Dealership name")<br/>
-            @Html.DropDownList("CarDealerId", TempData["CarDealersData"] as IEnumerable<SelectListItem>)
+            @Html.DropDownList("CarDealerId", (TempData["CarDealersData"] ?? new List<SelectListItem>() ) as IEnumerable<SelectListItem>)
         </div>
         
         <p class="textSet">
